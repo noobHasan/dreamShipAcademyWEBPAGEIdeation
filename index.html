@@ -57,7 +57,7 @@
       <div class="p-4 space-y-4 font-bold text-xs text-slate-700">
         <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">MAIN NAVIGATION</span>
         <a href="3.PersonalizedHome.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="home" class="w-4 h-4 text-cobalt"></i> Personalized Home</a>
-        <a href="3.PersonalizedHome.html#learn" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="book-open" class="w-4 h-4 text-cobalt"></i> LEARN (Academic)</a>
+        <a href="3.PersonalizedHome.html#learn" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="book-open" class="w-4 h-4 text-cobalt"></i> LEARN (Academic & AI)</a>
         <a href="10.DreamCertHub.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="award" class="w-4 h-4 text-amberAccent"></i> GROW (Skills & Certs)</a>
         <a href="11.DreamGlobalHub.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="globe" class="w-4 h-4 text-blue-600"></i> DreamGlobal 🔒</a>
         <a href="13.DreamCampus.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50"><i data-lucide="users" class="w-4 h-4 text-slate-600"></i> DreamCampus</a>
@@ -76,10 +76,11 @@
     </div>
   </aside>
 
-  <!-- Top Sticky Navigation -->
+  <!-- Top Sticky Navigation (Grouped 3 Core Pillars Dropdowns) -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- Logo & Mobile Menu Toggle -->
+      
+      <!-- Brand Logo & Mobile Drawer Toggle -->
       <div class="flex items-center gap-3">
         <button onclick="toggleLandingMobileMenu()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors">
           <i data-lucide="menu" class="w-6 h-6"></i>
@@ -95,15 +96,103 @@
         </a>
       </div>
 
-      <!-- Primary 4-Pillar Nav -->
-      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold tracking-wider text-slate-600">
-        <a href="3.PersonalizedHome.html" class="hover:text-cobalt transition-colors py-1">HOME</a>
-        <a href="3.PersonalizedHome.html#learn" class="hover:text-cobalt transition-colors py-1">LEARN</a>
-        <a href="10.DreamCertHub.html" class="hover:text-cobalt transition-colors py-1">GROW (SKILLS)</a>
-        <a href="11.DreamGlobalHub.html" class="hover:text-cobalt transition-colors py-1 flex items-center gap-1">GLOBAL <span class="text-[10px]">🔒</span></a>
-        <a href="13.DreamCampus.html" class="hover:text-cobalt transition-colors py-1">CAMPUS</a>
-        <a href="14.DreamArena.html" class="hover:text-cobalt transition-colors py-1">ARENA</a>
-        <a href="15.InstitutionsB2B.html" class="hover:text-cobalt transition-colors py-1 text-slate-500">INSTITUTIONS</a>
+      <!-- Grouped 3-Pillar Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold tracking-wider text-slate-700">
+        
+        <!-- LEARN Dropdown -->
+        <div class="relative group py-2">
+          <button class="inline-flex items-center gap-1 hover:text-cobalt transition-colors">
+            <span>LEARN</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:text-cobalt"></i>
+          </button>
+          <div class="absolute left-0 mt-2 w-64 rounded-2xl bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-3 space-y-1 z-50">
+            <a href="3.PersonalizedHome.html#learn" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="book-open" class="w-4 h-4 text-cobalt"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">Academic Curriculum</div>
+                <div class="text-[10px] text-slate-400 font-normal">BTEB Subjects & Notes</div>
+              </div>
+            </a>
+            <a href="3.PersonalizedHome.html#dreamai" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamAI Tutor</div>
+                <div class="text-[10px] text-slate-400 font-normal">24/7 AI Homework Helper</div>
+              </div>
+            </a>
+            <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="flask-conical" class="w-4 h-4 text-purple-600"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamLabs</div>
+                <div class="text-[10px] text-slate-400 font-normal">Virtual Circuit Simulation</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- GROW Dropdown -->
+        <div class="relative group py-2">
+          <button class="inline-flex items-center gap-1 hover:text-cobalt transition-colors">
+            <span>GROW</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:text-cobalt"></i>
+          </button>
+          <div class="absolute left-0 mt-2 w-64 rounded-2xl bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-3 space-y-1 z-50">
+            <a href="10.DreamCertHub.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamCert Skills</div>
+                <div class="text-[10px] text-slate-400 font-normal">Live Cohorts & Certification</div>
+              </div>
+            </a>
+            <a href="10.DreamCertHub.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-cobalt"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DUET Prep & Higher Ed</div>
+                <div class="text-[10px] text-slate-400 font-normal">BSc Admission Question Bank</div>
+              </div>
+            </a>
+            <a href="11.DreamGlobalHub.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="globe" class="w-4 h-4 text-blue-600"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamGlobal Hub 🔒</div>
+                <div class="text-[10px] text-slate-400 font-normal">Credit Transfer & Scholarships</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- CONNECT Dropdown -->
+        <div class="relative group py-2">
+          <button class="inline-flex items-center gap-1 hover:text-cobalt transition-colors">
+            <span>CONNECT</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:text-cobalt"></i>
+          </button>
+          <div class="absolute left-0 mt-2 w-64 rounded-2xl bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-3 space-y-1 z-50">
+            <a href="13.DreamCampus.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="users" class="w-4 h-4 text-orange-600"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamCampus Chapters</div>
+                <div class="text-[10px] text-slate-400 font-normal">49 Polytechnic Clubs</div>
+              </div>
+            </a>
+            <a href="14.DreamArena.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="trophy" class="w-4 h-4 text-rose-600"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">DreamArena Competitions</div>
+                <div class="text-[10px] text-slate-400 font-normal">National Speed Run & Hackathons</div>
+              </div>
+            </a>
+            <a href="12.CommunityHub.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50">
+              <i data-lucide="message-square" class="w-4 h-4 text-indigo-600"></i>
+              <div>
+                <div class="text-xs font-bold text-obsidian">Community Q&A Forum</div>
+                <div class="text-[10px] text-slate-400 font-normal">Student Discussion & Notes</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="15.InstitutionsB2B.html" class="hover:text-cobalt transition-colors">INSTITUTIONS (B2B)</a>
       </nav>
 
       <!-- Right Controls: Profile / Entitlement Status + 14-Module Switcher Dropdown -->
@@ -284,17 +373,17 @@
           </p>
 
           <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
-            <a href="3.PersonalizedHome.html" class="px-6 sm:px-7 py-3 rounded-xl bg-amberAccent hover:bg-amberHover text-white font-bold text-sm sm:text-base shadow-lg shadow-amberAccent/25 transition-all flex items-center gap-2">
+            <a href="3.PersonalizedHome.html" class="px-6 sm:px-7 py-3 rounded-xl bg-amberAccent hover:bg-amberHover text-white font-bold text-sm sm:text-base shadow-lg shadow-amberAccent/25 transition-all flex items-center gap-2 font-display">
               <span>বিনামূল্যে শুরু করুন</span>
               <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
-            <a href="#modules" class="px-6 sm:px-7 py-3 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-slate-700 font-bold text-sm sm:text-base shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
+            <a href="#modules" class="px-6 sm:px-7 py-3 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-slate-700 font-bold text-sm sm:text-base shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 font-display">
               <i data-lucide="layout-grid" class="w-5 h-5 text-cobalt"></i>
               <span>মডিউলগুলো দেখুন</span>
             </a>
           </div>
 
-          <!-- Social Proof -->
+          <!-- Student Metrics Social Proof -->
           <div class="pt-4 border-t border-slate-200/80 flex items-center gap-4">
             <div class="flex -space-x-2">
               <div class="w-9 h-9 rounded-full ring-2 ring-white bg-slate-800 text-white text-xs font-bold flex items-center justify-center">রা</div>
@@ -303,20 +392,38 @@
               <div class="w-9 h-9 rounded-full ring-2 ring-white bg-amberAccent text-white text-xs font-bold flex items-center justify-center">+২৫হাজার</div>
             </div>
             <div>
-              <div class="flex text-amber-400 text-xs">
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+              <div class="flex items-center gap-2">
+                <div class="flex text-amber-400 text-xs">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                </div>
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">৯৫% পাশ নিশ্চিত</span>
               </div>
               <p class="text-xs font-semibold text-slate-600 mt-0.5">দেশজুড়ে ৪৯+ পলিটেকনিকের শিক্ষার্থীদের দ্বারা ব্যবহৃত</p>
             </div>
           </div>
         </div>
 
-        <!-- Right Hero Mockup Frame -->
+        <!-- Right Hero Mockup Frame with Interactive Persona Previewer -->
         <div class="lg:col-span-6 relative">
+          
+          <!-- Persona Previewer Tabs Header -->
+          <div class="mb-3 flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-bold scrollbar-none">
+            <span class="text-[10px] uppercase font-mono text-slate-400 shrink-0 pr-1">Try Persona:</span>
+            <button onclick="switchHeroPersona('cst')" id="persona-btn-cst" class="px-3 py-1.5 rounded-xl bg-cobalt text-white shadow-sm transition-all shrink-0">
+              💻 CST 3rd Sem (Rahim)
+            </button>
+            <button onclick="switchHeroPersona('civil')" id="persona-btn-civil" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all shrink-0">
+              🏗️ Civil 5th Sem (Tanvir)
+            </button>
+            <button onclick="switchHeroPersona('duet')" id="persona-btn-duet" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all shrink-0">
+              🎓 DUET Aspirant (Sumi)
+            </button>
+          </div>
+
           <div class="w-full bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden">
             <!-- Browser Top Bar -->
             <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
@@ -325,8 +432,8 @@
                 <span class="w-3 h-3 rounded-full bg-amber-400"></span>
                 <span class="w-3 h-3 rounded-full bg-green-400"></span>
               </div>
-              <div class="px-4 py-1 rounded-md bg-white border border-slate-200 text-[11px] font-mono text-slate-500 w-48 sm:w-64 text-center truncate">
-                app.dreamship.academy/dashboard
+              <div class="px-4 py-1 rounded-md bg-white border border-slate-200 text-[11px] font-mono text-slate-500 w-48 sm:w-64 text-center truncate" id="hero-browser-url">
+                app.dreamship.academy/dashboard/cst-3rd-sem
               </div>
               <div class="flex items-center gap-2 text-slate-400">
                 <i data-lucide="bell" class="w-3.5 h-3.5"></i>
@@ -334,15 +441,16 @@
               </div>
             </div>
 
-            <!-- Dashboard Mini View -->
-            <div class="p-4 sm:p-5 bg-slate-50 space-y-4">
-              <!-- Personalized Header -->
+            <!-- Dynamic Dashboard Content (Updated live by Persona Switcher Script) -->
+            <div class="p-4 sm:p-5 bg-slate-50 space-y-4" id="hero-mockup-body">
+              
+              <!-- Dynamic Persona Header -->
               <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200/80 flex items-center justify-between">
                 <div>
-                  <h4 class="text-sm font-bold text-obsidian">স্বাগতম, রহিম</h4>
-                  <p class="text-xs text-slate-500">সিএসটি · ৩য় পর্ব · প্রবিধান ২০২২</p>
+                  <h4 class="text-sm font-bold text-obsidian" id="hero-user-name">স্বাগতম, রহিম হাসান</h4>
+                  <p class="text-xs text-slate-500" id="hero-user-sub">কম্পিউটার সাইন্স (CST) · ৩য় পর্ব · ঢাকা পলিটেকনিক</p>
                 </div>
-                <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold flex items-center gap-1">
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold flex items-center gap-1 shrink-0" id="hero-user-badge">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ড্রিমকোর সক্রিয়
                 </span>
               </div>
@@ -350,28 +458,28 @@
               <!-- Continue Learning Hero Card -->
               <div class="bg-gradient-to-r from-obsidian to-slate-900 text-white p-4 rounded-xl shadow-md space-y-2">
                 <div class="flex justify-between items-start">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-tealAccent bg-tealAccent/10 px-2 py-0.5 rounded">পড়া চালিয়ে যান</span>
-                  <span class="text-xs text-slate-300">৬৮% সম্পন্ন</span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-tealAccent bg-tealAccent/10 px-2 py-0.5 rounded" id="hero-card-tag">পড়া চালিয়ে যান</span>
+                  <span class="text-xs text-slate-300" id="hero-card-progress">৬৮% সম্পন্ন</span>
                 </div>
-                <h5 class="text-xs sm:text-sm font-bold">ডিজিটাল ইলেকট্রনিক্স → বুলিয়ান অ্যালজেব্রা ও লজিক গেট</h5>
+                <h5 class="text-xs sm:text-sm font-bold" id="hero-card-title">ডিজিটাল ইলেকট্রনিক্স → বুলিয়ান অ্যালজেব্রা ও লজিক গেট</h5>
                 <div class="w-full bg-slate-800 rounded-full h-1.5 my-2">
-                  <div class="bg-tealAccent h-1.5 rounded-full w-2/3"></div>
+                  <div class="bg-tealAccent h-1.5 rounded-full w-2/3" id="hero-progress-bar"></div>
                 </div>
-                <button class="w-full py-1.5 rounded-lg bg-cobalt hover:bg-cobaltHover text-xs font-bold text-white transition-colors">
+                <a href="3.PersonalizedHome.html" class="w-full py-1.5 rounded-lg bg-cobalt hover:bg-cobaltHover text-xs font-bold text-white transition-colors block text-center">
                   পাঠ পুনরায় শুরু করুন
-                </button>
+                </a>
               </div>
 
               <!-- Entitlement Matrix Mini Cards -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="hero-matrix-cards">
                 <!-- Active Module -->
                 <div class="p-3 bg-white rounded-xl border border-emerald-200/80 shadow-sm relative overflow-hidden">
                   <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-xs font-bold text-obsidian">ড্রিমএআই কোপাইলট</span>
+                    <span class="text-xs font-bold text-obsidian">ড্রিমএআই টিউটর</span>
                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">সক্রিয়</span>
                   </div>
                   <p class="text-[11px] text-slate-500 mb-2">বিটিইবি পাঠ্যবই-ভিত্তিক এআই গৃহশিক্ষক</p>
-                  <button class="w-full py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-[11px] font-bold text-slate-700">জিজ্ঞাসা করুন</button>
+                  <a href="3.PersonalizedHome.html#dreamai" class="w-full py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-[11px] font-bold text-slate-700 block text-center">জিজ্ঞাসা করুন</a>
                 </div>
 
                 <!-- Locked Add-On Module -->
@@ -386,14 +494,14 @@
               </div>
 
               <!-- Live Cohort Strip -->
-              <div class="p-3 bg-blue-50/80 border border-blue-200 rounded-xl flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
+              <div class="p-3 bg-blue-50/80 border border-blue-200 rounded-xl flex items-center justify-between" id="hero-strip-card">
+                <div class="flex items-center gap-2.5 min-w-0">
                   <div class="w-7 h-7 rounded-lg bg-cobalt text-white flex items-center justify-center shrink-0">
                     <i data-lucide="video" class="w-4 h-4"></i>
                   </div>
                   <div class="min-w-0">
-                    <div class="text-xs font-bold text-obsidian truncate">গেম ডেভেলপমেন্ট উইথ ইউনিটি</div>
-                    <div class="text-[10px] text-slate-500 truncate">পরবর্তী ক্লাস: রবিবার রাত ৮:০০</div>
+                    <div class="text-xs font-bold text-obsidian truncate" id="hero-strip-title">গেম ডেভেলপমেন্ট উইথ ইউনিটি</div>
+                    <div class="text-[10px] text-slate-500 truncate" id="hero-strip-sub">পরবর্তী ক্লাস: রবিবার রাত ৮:০০</div>
                   </div>
                 </div>
                 <a href="8.LiveClassroom.html" class="px-3 py-1 rounded-lg bg-cobalt text-white text-[11px] font-bold shrink-0">জুমে যোগ দিন</a>
@@ -626,8 +734,8 @@
         <p class="text-slate-400 text-xs sm:text-sm mt-2">যুক্ত হোন ২৫,০০০+ পলিটেকনিক শিক্ষার্থীর সাথে এবং নিজেকে এগিয়ে রাখুন।</p>
       </div>
       <div class="flex items-center gap-4 shrink-0">
-        <a href="3.PersonalizedHome.html" class="px-6 sm:px-8 py-3 rounded-xl bg-amberAccent hover:bg-amberHover text-white font-bold text-xs sm:text-sm shadow-lg shadow-amberAccent/20 transition-all">
-          ফ্রি স্টুডент অ্যাকাউন্ট খুলুন
+        <a href="3.PersonalizedHome.html" class="px-6 sm:px-8 py-3 rounded-xl bg-amberAccent hover:bg-amberHover text-white font-bold text-xs sm:text-sm shadow-lg shadow-amberAccent/20 transition-all font-display">
+          ফ্রি স্টুডেন্ট অ্যাকাউন্ট খুলুন
         </a>
       </div>
     </div>
@@ -680,7 +788,136 @@
     </div>
   </footer>
 
+  <!-- Interactive Persona Switcher Engine Script -->
   <script>
+    const personas = {
+      cst: {
+        name: 'স্বাগতম, রহিম হাসান',
+        sub: 'কম্পিউটার সাইন্স (CST) · ৩য় পর্ব · ঢাকা পলিটেকনিক',
+        badge: '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ড্রিমকোর সক্রিয়',
+        url: 'app.dreamship.academy/dashboard/cst-3rd-sem',
+        tag: 'পড়া চালিয়ে যান',
+        progress: '৬৮% সম্পন্ন',
+        title: 'ডিজিটাল ইলেকট্রনিক্স → বুলিয়ান অ্যালজেব্রা ও লজিক গেট',
+        barWidth: 'w-2/3',
+        matrix: `
+          <div class="p-3 bg-white rounded-xl border border-emerald-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-obsidian">ড্রিমএআই টিউটর</span>
+              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">সক্রিয়</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-2">বিটিইবি পাঠ্যবই-ভিত্তিক এআই গৃহশিক্ষক</p>
+            <a href="3.PersonalizedHome.html#dreamai" class="w-full py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-[11px] font-bold text-slate-700 block text-center">জিজ্ঞাসা করুন</a>
+          </div>
+          <div class="p-3 bg-slate-100/80 rounded-xl border border-dashed border-slate-300 relative">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-slate-500">ড্রিমগ্লোবাল</span>
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 mb-2">ক্রেডিট ট্রান্সফার ও স্কলারশিপ</p>
+            <a href="5.DreamGlobalAddon.html" class="w-full py-1 rounded-md bg-amberAccent text-white text-[11px] font-bold shadow-sm block text-center">+ যোগ করুন ৳২০০/মাস</a>
+          </div>
+        `,
+        stripTitle: 'গেম ডেভেলপমেন্ট উইথ ইউনিটি',
+        stripSub: 'পরবর্তী ক্লাস: রবিবার রাত ৮:০০',
+        stripLink: '8.LiveClassroom.html'
+      },
+      civil: {
+        name: 'স্বাগতম, তানভীর আহমেদ',
+        sub: 'সিভিল টেকনোলজি · ৫ম পর্ব · চট্টগ্রাম পলিটেকনিক',
+        badge: '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ড্রিমকোর সক্রিয়',
+        url: 'app.dreamship.academy/dashboard/civil-5th-sem',
+        tag: 'পড়া চালিয়ে যান',
+        progress: '৮২% সম্পন্ন',
+        title: 'স্ট্রাকচারাল মেকানিক্স → আরসিসি বিম ক্যালকুলেশন',
+        barWidth: 'w-4/5',
+        matrix: `
+          <div class="p-3 bg-white rounded-xl border border-emerald-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-obsidian">অটোক্যাড লাইভ ব্যাচ</span>
+              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">এনরোল্ড</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-2">AutoCAD & 3D Modeling Cohort</p>
+            <a href="7.LiveCohorts.html" class="w-full py-1 rounded-md bg-cobalt text-white text-[11px] font-bold block text-center">ক্লাসরুম দেখুন</a>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-emerald-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-obsidian">ড্রিমল্যাবস মেকানিক্স</span>
+              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">সক্রিয়</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-2">ভার্চুয়াল সোয়েল টেস্ট সিমুলেশন</p>
+            <a href="3.PersonalizedHome.html#dreamlabs" class="w-full py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-[11px] font-bold text-slate-700 block text-center">ল্যাব খুলুন</a>
+          </div>
+        `,
+        stripTitle: 'National CAD Design Challenge 2026',
+        stripSub: 'ড্রিমঅ্যারিনা ড্রাফটিং প্রতিযোগিতা · প্রাইজ ৳২৫,০০০',
+        stripLink: '14.DreamArena.html'
+      },
+      duet: {
+        name: 'স্বাগতম, সুমি আক্তার',
+        sub: 'ডুয়েট অ্যাডমিশন ক্যান্ডিডেট · রাজশাহী পলিটেকনিক অ্যালামনাই',
+        badge: '<span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> ডুয়েট প্রিমিয়াম',
+        url: 'app.dreamship.academy/dashboard/duet-prep',
+        tag: 'ডুয়েট প্রশ্নব্যাংক',
+        progress: '৯০% সম্পন্ন',
+        title: 'ডুয়েট পদার্থবিজ্ঞান → ভেক্টর ও গতিবিদ্যা এডভান্সড সেট',
+        barWidth: 'w-11/12',
+        matrix: `
+          <div class="p-3 bg-white rounded-xl border border-purple-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-obsidian">ডুয়েট কোশ্চেন ব্যাংক</span>
+              <span class="text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">আনলকড</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-2">২০০৫-২০২৫ ডুয়েট বিএসসি ভর্তি প্রশ্ন</p>
+            <a href="10.DreamCertHub.html" class="w-full py-1 rounded-md bg-purple-600 text-white text-[11px] font-bold block text-center">প্রশ্ন সলভ করুন</a>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-emerald-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-obsidian">ড্রিমগ্লোবাল স্কলারশিপ</span>
+              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">সক্রিয়</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mb-2">জার্মানি ও চায়না ক্রেডিট ট্রান্সফার</p>
+            <a href="11.DreamGlobalHub.html" class="w-full py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-[11px] font-bold text-slate-700 block text-center">পোর্টাল দেখুন</a>
+          </div>
+        `,
+        stripTitle: 'DreamGlobal Abroad Mentorship Live',
+        stripSub: 'পরবর্তী সেশন: শুক্রবার রাত ৯:০০',
+        stripLink: '11.DreamGlobalHub.html'
+      }
+    };
+
+    function switchHeroPersona(key) {
+      const p = personas[key];
+      if (!p) return;
+
+      // Update Tab Styles
+      ['cst', 'civil', 'duet'].forEach(k => {
+        const btn = document.getElementById(`persona-btn-${k}`);
+        if (btn) {
+          if (k === key) {
+            btn.className = 'px-3 py-1.5 rounded-xl bg-cobalt text-white shadow-sm transition-all shrink-0';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all shrink-0';
+          }
+        }
+      });
+
+      // Update Mockup Details
+      document.getElementById('hero-browser-url').innerText = p.url;
+      document.getElementById('hero-user-name').innerText = p.name;
+      document.getElementById('hero-user-sub').innerText = p.sub;
+      document.getElementById('hero-user-badge').innerHTML = p.badge;
+      document.getElementById('hero-card-tag').innerText = p.tag;
+      document.getElementById('hero-card-progress').innerText = p.progress;
+      document.getElementById('hero-card-title').innerText = p.title;
+      document.getElementById('hero-progress-bar').className = `bg-tealAccent h-1.5 rounded-full ${p.barWidth}`;
+      document.getElementById('hero-matrix-cards').innerHTML = p.matrix;
+      document.getElementById('hero-strip-title').innerText = p.stripTitle;
+      document.getElementById('hero-strip-sub').innerText = p.stripSub;
+
+      lucide.createIcons();
+    }
+
     lucide.createIcons();
   </script>
 </body>
