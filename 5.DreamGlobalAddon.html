@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamGlobal Add-on Flow — Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden">
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Sidebar Navigation (Responsive Drawer on Mobile/Tablet, Fixed on Desktop) -->
+  <aside id="app-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300 ease-in-out">
+    <div>
+      <!-- Brand Logo -->
+      <div class="h-16 px-6 flex items-center justify-between border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+            <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+          </div>
+          <div>
+            <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+            <span class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+          </div>
+        </div>
+        <!-- Mobile Close Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+            <span class="font-display">Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="3.PersonalizedHome.html#learn" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400"></i>
+              <span>My Subjects</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamai" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+              <span>DreamAI</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamLabs</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+              <span>Skills & Courses</span>
+            </div>
+          </a>
+          <button onclick="openModal(); toggleMobileSidebar();" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-amber-50 text-amber-900 font-semibold text-sm transition-colors text-left" id="nav-global-btn">
+            <div class="flex items-center gap-3">
+              <i data-lucide="globe" class="w-4 h-4 text-amberAccent" id="nav-global-icon"></i>
+              <span>DreamGlobal</span>
+            </div>
+            <span id="nav-global-badge">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-amber Accent"></i>
+            </span>
+          </button>
+          <a href="11.DreamGlobalHub.html" class="flex items-center gap-3 px-3 py-2 text-xs text-cobalt hover:underline pl-8 font-semibold">
+            <span>Explore Hub →</span>
+          </a>
+        </div>
+
+        <!-- CONNECT -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">CONNECT</span>
+          <a href="13.DreamCampus.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamCampus</span>
+            </div>
+            <span class="text-[9px] font-display font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">DPI</span>
+          </a>
+          <a href="14.DreamArena.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamArena</span>
+          </a>
+          <a href="15.InstitutionsB2B.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+            <span>For Institutions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Footer Info -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">
+          RH
+        </div>
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+    
+    <!-- Top Bar with Hamburger & Recurring Counter -->
+    <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        
+        <!-- Student Academic Pill -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-cobalt">
+          <span class="w-2 h-2 rounded-full bg-cobalt"></span>
+          <span>Diploma in CST · Regulation 2022</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Quick Billing Counter -->
+        <div class="px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center gap-1.5 sm:gap-2">
+          <span class="hidden sm:inline">Recurring Total:</span>
+          <span id="topbar-total-bdt" class="font-mono font-bold text-cobalt text-xs sm:text-sm">৳300 / mo</span>
+        </div>
+
+        <!-- Module Switcher -->
+        <div class="relative inline-block text-left" id="p5-module-wrapper">
+          <button onclick="toggleP5Menu()" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-obsidian text-white text-[11px] sm:text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span class="hidden sm:inline">All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p5-module-menu" class="hidden absolute right-0 mt-2 w-72 sm:w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules</div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2. Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3. Personalized Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4. DreamCore Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5. DreamGlobal Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6. Pricing & Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10. DreamCert Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11. DreamGlobal Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12. Community Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13. DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14. DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15. B2B Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Workspace -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <h1 class="text-xl sm:text-2xl font-bold text-obsidian tracking-tight">Good afternoon, Hasan 👋</h1>
+            <p class="text-xs text-slate-500 mt-0.5">Diploma in Computer Science & Technology · 3rd Semester · Dhaka Polytechnic</p>
+          </div>
+          <button onclick="resetDemoState()" class="text-xs text-slate-400 hover:text-slate-600 underline self-start md:self-auto">
+            Reset Demo State
+          </button>
+        </div>
+
+        <!-- 2-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          
+          <!-- LEFT COLUMN: Module Hub (8 Cols) -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Module Status Cards Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              
+              <!-- DreamAI Card (Active) -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-emerald-200/80 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center">
+                      <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[10px] font-mono font-bold">
+                      ✓ Active
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-obsidian">DreamAI Core</h4>
+                  <p class="text-xs text-slate-500 mt-1">24/7 AI tutor for CST 3rd semester subjects</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span class="font-mono text-slate-400">৳300/mo</span>
+                  <span class="font-bold text-tealAccent">Included</span>
+                </div>
+              </div>
+
+              <!-- DreamLabs Card (Active) -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-white border border-emerald-200/80 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center">
+                      <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[10px] font-mono font-bold">
+                      ✓ Active
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-obsidian">DreamLabs</h4>
+                  <p class="text-xs text-slate-500 mt-1">Virtual circuit simulations & coding sandbox</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span class="font-mono text-slate-400">Bundled</span>
+                  <span class="font-bold text-tealAccent">Included</span>
+                </div>
+              </div>
+
+              <!-- DreamGlobal Dynamic Card (Locked or Active) -->
+              <div id="module-global-card" onclick="handleGlobalCardClick()" class="p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 shadow-sm relative overflow-hidden flex flex-col justify-between cursor-pointer hover:border-amberAccent transition-all group">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="w-9 h-9 rounded-xl bg-slate-200/80 text-slate-500 flex items-center justify-center group-hover:bg-amber-50 group-hover:text-amberAccent transition-colors" id="global-icon-wrapper">
+                      <i data-lucide="globe" class="w-5 h-5"></i>
+                    </div>
+                    <span id="global-status-badge" class="px-2 py-0.5 bg-slate-200 text-slate-600 rounded text-[10px] font-mono font-bold flex items-center gap-1">
+                      <i data-lucide="lock" class="w-3 h-3"></i> Locked
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-obsidian" id="global-card-title">DreamGlobal</h4>
+                  <p class="text-xs text-slate-500 mt-1" id="global-card-desc">Study abroad guidance, credit transfer & podcasts</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs" id="global-card-footer">
+                  <span class="font-mono text-slate-500">৳200/mo</span>
+                  <span class="font-bold text-amberAccent group-hover:underline flex items-center gap-1">
+                    Add Module <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- DreamGlobal Dynamic Workspace Banner -->
+            <div id="dreamglobal-unlocked-panel" class="hidden bg-gradient-to-r from-blue-900 via-obsidian to-slate-900 text-white p-5 sm:p-6 rounded-2xl shadow-lg relative overflow-hidden space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span class="px-2.5 py-1 rounded-md bg-tealAccent/20 text-tealAccent text-[10px] font-mono font-bold uppercase tracking-wider self-start sm:self-auto">
+                  DreamGlobal Hub · Active ✓
+                </span>
+                <span class="text-xs text-slate-300">New Podcast Episode Available</span>
+              </div>
+              <div>
+                <h3 class="text-base sm:text-lg font-bold">Diploma Credit Transfer to Australian Universities</h3>
+                <p class="text-xs text-slate-300 mt-1">Explore scholarship criteria, prerequisite subjects, and student visa updates for 2026 intake.</p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div class="p-3 bg-white/10 rounded-xl border border-white/10 text-xs">
+                  <span class="font-bold block text-tealAccent">Scholarship Alerts</span>
+                  <span class="text-[11px] text-slate-300">4 new polytechnic grants</span>
+                </div>
+                <div class="p-3 bg-white/10 rounded-xl border border-white/10 text-xs">
+                  <span class="font-bold block text-tealAccent">Podcast Hub</span>
+                  <span class="text-[11px] text-slate-300">Episode 22: Australia Visa</span>
+                </div>
+                <div class="p-3 bg-white/10 rounded-xl border border-white/10 text-xs">
+                  <span class="font-bold block text-tealAccent">Country Guides</span>
+                  <span class="text-[11px] text-slate-300">Germany & New Zealand</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Standard Learning Content -->
+            <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-sm font-bold text-obsidian">Current Subjects (CST 3rd Semester)</h3>
+                <span class="text-xs text-cobalt font-bold">Regulation 2022</span>
+              </div>
+              <div class="space-y-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <h5 class="text-xs font-bold text-obsidian">Digital Electronics (28531)</h5>
+                    <p class="text-[11px] text-slate-500">Unit 3: Boolean Algebra & Logic Gates</p>
+                  </div>
+                  <button class="px-3 py-1.5 bg-cobalt text-white rounded-lg text-xs font-bold hover:bg-cobaltHover transition-colors shrink-0 self-start sm:self-auto">
+                    Continue Lesson
+                  </button>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <h5 class="text-xs font-bold text-obsidian">Programming Essentials (28532)</h5>
+                    <p class="text-[11px] text-slate-500">Unit 5: Pointers & Memory Allocation</p>
+                  </div>
+                  <button class="px-3 py-1.5 bg-cobalt text-white rounded-lg text-xs font-bold hover:bg-cobaltHover transition-colors shrink-0 self-start sm:self-auto">
+                    Continue Lesson
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Billing Engine Breakdown (4 Cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Recurring Stack Breakdown Card -->
+            <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h4 class="text-xs font-display font-bold uppercase tracking-wider text-slate-400">Monthly Subscriptions</h4>
+                <span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold">Auto-Renew</span>
+              </div>
+
+              <!-- Line Items -->
+              <div class="space-y-3 text-xs">
+                <!-- DreamAI Core Line -->
+                <div class="flex items-center justify-between text-slate-700">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span class="font-medium">DreamAI Core (AI + Labs)</span>
+                  </div>
+                  <span class="font-mono font-bold">৳300</span>
+                </div>
+
+                <!-- DreamGlobal Line Item -->
+                <div id="billing-line-global" class="flex items-center justify-between text-slate-400 border-t border-slate-100 pt-2">
+                  <div class="flex items-center gap-2">
+                    <span id="billing-dot-global" class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                    <span id="billing-label-global" class="font-medium">DreamGlobal Add-on</span>
+                  </div>
+                  <span id="billing-price-global" class="font-mono font-bold text-slate-400">--</span>
+                </div>
+              </div>
+
+              <!-- Calculation Total Box -->
+              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 mt-2">
+                <div class="flex items-center justify-between text-xs text-slate-500 font-mono">
+                  <span>DreamAI Core</span>
+                  <span>300 BDT</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500 font-mono" id="calc-line-global">
+                  <span>DreamGlobal</span>
+                  <span id="calc-global-val">0 BDT</span>
+                </div>
+                <div class="border-t border-slate-200 pt-2 flex items-center justify-between">
+                  <span class="text-xs font-bold text-obsidian uppercase">Total Monthly</span>
+                  <span id="summary-total-bdt" class="text-sm sm:text-base font-bold font-mono text-cobalt">300 BDT/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Granted Entitlements Readout -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 font-mono text-xs">
+              <span class="font-bold text-slate-500 uppercase text-[10px] block border-b border-slate-100 pb-2">
+                User Possesses Entitlements:
+              </span>
+              <ul id="entitlement-tags" class="space-y-1.5 text-[11px]">
+                <!-- Injected via JavaScript -->
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- DreamGlobal Purchase Modal (Responsive Container) -->
+  <div id="purchase-modal" class="fixed inset-0 z-50 bg-obsidian/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col transform transition-all">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 bg-gradient-to-r from-blue-900 to-obsidian text-white relative shrink-0">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/10 text-tealAccent flex items-center justify-center mb-3">
+          <i data-lucide="globe" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </div>
+        <h3 class="text-lg sm:text-xl font-bold">DreamGlobal Add-on</h3>
+        <p class="text-xs text-slate-300 mt-1">পলিটেকনিক শিক্ষার্থীদের জন্য উচ্চশিক্ষা ও বৈশ্বিক সুযোগের পূর্ণাঙ্গ হাব</p>
+      </div>
+
+      <!-- Feature Checklist (Scrollable Body) -->
+      <div class="p-5 sm:p-6 space-y-4 overflow-y-auto flex-1">
+        <div class="space-y-2.5 text-xs text-slate-700">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-tealAccent flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+            <span><strong>Study Abroad Guidance:</strong> ডিপ্লোমা শেষে অস্ট্রেলিয়া, জার্মানি ও নিউজিল্যান্ডে ক্রেডিট ট্রান্সফার</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-tealAccent flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+            <span><strong>Country Updates & Visa:</strong> ভিসা নিয়মাবলী, আইইএলটিএস রিকয়ারমেন্ট ও ডকুমেন্ট চেকলিস্ট</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-tealAccent flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+            <span><strong>Scholarship Alerts:</strong> ডিপ্লোমা হোল্ডারদের জন্য টিউশন ফি ওয়েভার ও স্কলারশিপ নোটিফিকেশন</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-tealAccent flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+            <span><strong>Exclusive Community:</strong> বিদেশে অধ্যয়নরত সিনিয়র ডিপ্লোমা ইঞ্জিনিয়ারদের সাথে নেটওয়ার্ক</span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-tealAccent flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+            <span><strong>Podcasts & Webinars:</strong> লাইভ প্রশ্নোত্তর সেশন এবং প্রিমিয়াম পডকাস্ট অ্যাক্সেস</span>
+          </div>
+        </div>
+
+        <!-- Pricing & Action -->
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Monthly Price</span>
+            <span class="text-lg sm:text-xl font-bold font-mono text-obsidian">200 BDT<span class="text-xs text-slate-500 font-sans">/mo</span></span>
+          </div>
+          <button onclick="confirmPurchase()" id="btn-add-global" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-amberAccent hover:bg-amberHover text-white text-xs font-bold shadow-lg shadow-amberAccent/25 transition-all flex items-center gap-2 shrink-0">
+            <span>Add DreamGlobal</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript State Management & Mobile Handlers -->
+  <script>
+    let dreamGlobalActive = false;
+
+    function renderState() {
+      // 1. Top Bar & Summary Totals
+      const totalAmount = dreamGlobalActive ? 500 : 300;
+      document.getElementById('topbar-total-bdt').innerText = `৳${totalAmount} / mo`;
+      document.getElementById('summary-total-bdt').innerText = `${totalAmount} BDT/month`;
+
+      // 2. Billing Breakdown Box
+      const billingLineGlobal = document.getElementById('billing-line-global');
+      const billingDotGlobal = document.getElementById('billing-dot-global');
+      const billingPriceGlobal = document.getElementById('billing-price-global');
+      const calcGlobalVal = document.getElementById('calc-global-val');
+
+      if (dreamGlobalActive) {
+        billingLineGlobal.className = 'flex items-center justify-between text-slate-700 border-t border-slate-100 pt-2';
+        billingDotGlobal.className = 'w-1.5 h-1.5 rounded-full bg-emerald-500';
+        billingPriceGlobal.className = 'font-mono font-bold text-slate-800';
+        billingPriceGlobal.innerText = '৳200';
+        calcGlobalVal.innerText = '200 BDT';
+      } else {
+        billingLineGlobal.className = 'flex items-center justify-between text-slate-400 border-t border-slate-100 pt-2';
+        billingDotGlobal.className = 'w-1.5 h-1.5 rounded-full bg-slate-300';
+        billingPriceGlobal.className = 'font-mono font-bold text-slate-400';
+        billingPriceGlobal.innerText = '--';
+        calcGlobalVal.innerText = '0 BDT';
+      }
+
+      // 3. Module Card on Dashboard
+      const moduleCard = document.getElementById('module-global-card');
+      const statusBadge = document.getElementById('global-status-badge');
+      const iconWrapper = document.getElementById('global-icon-wrapper');
+      const cardFooter = document.getElementById('global-card-footer');
+      const unlockedPanel = document.getElementById('dreamglobal-unlocked-panel');
+
+      if (dreamGlobalActive) {
+        moduleCard.className = 'p-4 sm:p-5 rounded-2xl bg-white border border-emerald-200/80 shadow-sm relative overflow-hidden flex flex-col justify-between cursor-default';
+        iconWrapper.className = 'w-9 h-9 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center';
+        statusBadge.className = 'px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[10px] font-mono font-bold';
+        statusBadge.innerHTML = '✓ Active';
+        cardFooter.innerHTML = '<span class="font-mono text-slate-400">৳200/mo</span><span class="font-bold text-tealAccent">Active Subscription</span>';
+        unlockedPanel.classList.remove('hidden');
+      } else {
+        moduleCard.className = 'p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 shadow-sm relative overflow-hidden flex flex-col justify-between cursor-pointer hover:border-amberAccent transition-all group';
+        iconWrapper.className = 'w-9 h-9 rounded-xl bg-slate-200/80 text-slate-500 flex items-center justify-center group-hover:bg-amber-50 group-hover:text-amberAccent transition-colors';
+        statusBadge.className = 'px-2 py-0.5 bg-slate-200 text-slate-600 rounded text-[10px] font-mono font-bold flex items-center gap-1';
+        statusBadge.innerHTML = '<i data-lucide="lock" class="w-3 h-3"></i> Locked';
+        cardFooter.innerHTML = '<span class="font-mono text-slate-500">৳200/mo</span><span class="font-bold text-amberAccent group-hover:underline flex items-center gap-1">Add Module <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i></span>';
+        unlockedPanel.classList.add('hidden');
+      }
+
+      // 4. Sidebar Nav State
+      const navBadge = document.getElementById('nav-global-badge');
+      const navIcon = document.getElementById('nav-global-icon');
+      if (dreamGlobalActive) {
+        navBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-tealAccent"></span>';
+        navIcon.className = 'w-4 h-4 text-tealAccent';
+      } else {
+        navBadge.innerHTML = '<i data-lucide="lock" class="w-3.5 h-3.5 text-amberAccent"></i>';
+        navIcon.className = 'w-4 h-4 text-amberAccent';
+      }
+
+      // 5. Active Tokens List
+      const tokensList = document.getElementById('entitlement-tags');
+      const tokens = [
+        'dreamai.access',
+        'dreamlabs.access',
+        'practice.core'
+      ];
+      if (dreamGlobalActive) {
+        tokens.push(
+          'dreamglobal.premium',
+          'dreamglobal.community',
+          'dreamglobal.podcasts',
+          'dreamglobal.scholarships'
+        );
+      }
+
+      tokensList.innerHTML = tokens.map(t => 
+        `<li class="flex items-center gap-1.5 ${t.startsWith('dreamglobal') ? 'text-tealAccent font-bold' : 'text-slate-700'}">
+          <i data-lucide="check" class="w-3 h-3 ${t.startsWith('dreamglobal') ? 'text-tealAccent' : 'text-slate-400'}"></i>
+          <span>${t}</span>
+        </li>`
+      ).join('');
+
+      lucide.createIcons();
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('mobile-sidebar-backdrop');
+      if (sidebar && backdrop) {
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+      }
+    }
+
+    function toggleP5Menu() {
+      const m = document.getElementById('p5-module-menu');
+      if (m) m.classList.toggle('hidden');
+    }
+
+    function openModal() {
+      if (!dreamGlobalActive) {
+        document.getElementById('purchase-modal').classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('purchase-modal').classList.add('hidden');
+    }
+
+    function handleGlobalCardClick() {
+      if (!dreamGlobalActive) {
+        openModal();
+      }
+    }
+
+    function confirmPurchase() {
+      const btn = document.getElementById('btn-add-global');
+      btn.innerHTML = '<span>Processing...</span>';
+      
+      setTimeout(() => {
+        dreamGlobalActive = true;
+        closeModal();
+        btn.innerHTML = '<span>Add DreamGlobal</span><i data-lucide="arrow-right" class="w-4 h-4"></i>';
+        renderState();
+      }, 500);
+    }
+
+    function resetDemoState() {
+      dreamGlobalActive = false;
+      renderState();
+    }
+
+    // Initialize State
+    renderState();
+  </script>
+</body>
+</html>

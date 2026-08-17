@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Development with Unity — Cohort Classroom | Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden">
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Sidebar Navigation (Responsive Drawer on Mobile/Tablet, Fixed on Desktop) -->
+  <aside id="app-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300 ease-in-out">
+    <div>
+      <!-- Brand Logo -->
+      <div class="h-16 px-6 flex items-center justify-between border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+            <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+          </div>
+          <div>
+            <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+            <span class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+          </div>
+        </div>
+        <!-- Mobile Close Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+            <span class="font-display">Personalized Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="3.PersonalizedHome.html#learn" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400"></i>
+              <span>My Subjects</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamai" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+            <span>DreamAI Tutor</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamLabs</span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+            <span>Skills Catalog</span>
+          </a>
+          <a href="7.LiveCohorts.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="video" class="w-4 h-4 text-teal-600"></i>
+            <span>Live Cohorts Directory</span>
+          </a>
+          <a href="11.DreamGlobalHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamGlobal Hub</span>
+          </a>
+          <a href="13.DreamCampus.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamCampus</span>
+          </a>
+          <a href="14.DreamArena.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamArena</span>
+          </a>
+        </div>
+
+        <!-- PROFILE & PLATFORM -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">PROFILE & PLATFORM</span>
+          <a href="8.LiveClassroom.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-cobalt text-white font-semibold text-sm shadow-sm shadow-cobalt/25">
+            <div class="flex items-center gap-3">
+              <i data-lucide="play-circle" class="w-4 h-4"></i>
+              <span>My Enrolled Classroom</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-white/20 px-1.5 py-0.5 rounded">Active</span>
+          </a>
+          <a href="4.DreamCoreEngine.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+            <span>DreamCore Access Engine</span>
+          </a>
+          <a href="6.PricingAndPlans.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="credit-card" class="w-4 h-4 text-slate-400"></i>
+            <span>Plans & Billing</span>
+          </a>
+          <a href="15.InstitutionsB2B.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+            <span>For Institutions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Mini Profile Footer -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">RH</div>
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport Canvas -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+    
+    <!-- Top Breadcrumb & Module Switcher Bar -->
+    <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2 text-xs text-slate-500 truncate min-w-0">
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors shrink-0">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <nav class="hidden sm:flex items-center gap-2 truncate">
+          <a href="3.PersonalizedHome.html" class="hover:text-cobalt">Home</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          <a href="10.DreamCertHub.html" class="hover:text-cobalt">DreamCert</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+        </nav>
+        <span class="font-bold text-obsidian truncate">Game Development Unity</span>
+        <span class="px-2 py-0.5 rounded-lg bg-blue-50 border border-blue-200 text-cobalt font-mono text-[10px] font-bold shrink-0 hidden sm:inline">
+          Cohort #71
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- All 14 Modules Dropdown -->
+        <div class="relative inline-block text-left" id="p8-module-wrapper">
+          <button onclick="toggleP8Menu()" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-obsidian text-white text-[11px] sm:text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span class="hidden sm:inline">All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p8-module-menu" class="hidden absolute right-0 mt-2 w-72 sm:w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules</div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2. Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3. Personalized Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4. DreamCore Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5. DreamGlobal Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6. Pricing & Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10. DreamCert Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11. DreamGlobal Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12. Community Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13. DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14. DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15. B2B Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+        
+        <!-- 1. Hero Classroom Banner with Direct Zoom Launch -->
+        <div class="bg-gradient-to-r from-obsidian via-slate-900 to-obsidian text-white p-5 sm:p-8 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            <div class="lg:col-span-7 space-y-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-tealAccent/20 text-tealAccent text-[10px] font-mono font-bold uppercase tracking-wider">
+                  Live Cohort Room
+                </span>
+                <span class="text-xs text-slate-400 font-mono">12 Weeks · Cohort 2026-09</span>
+              </div>
+              <h1 class="text-xl sm:text-3xl font-bold tracking-tight">Game Development with Unity</h1>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                2D & 3D গেম আর্কিটেকচার, C# স্ক্রিপ্টিং, ফিজিক্স ইঞ্জিন এবং গুগল প্লেস্টোরে সম্পূর্ণ গেম পাবলিশিং লাইভ প্রজেক্ট।
+              </p>
+            </div>
+
+            <!-- Next Class Callout Card -->
+            <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/20 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono uppercase font-bold text-tealAccent flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-tealAccent animate-ping"></span>
+                  Next Class
+                </span>
+                <span class="text-xs text-slate-300 font-display">Starts in 2 hours</span>
+              </div>
+
+              <div>
+                <div class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-4 h-4 text-tealAccent"></i>
+                  <span>Sunday · 8:00 PM (আজকে)</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-0.5">Week 3: 2D Physics, RigidBody & Collision Matrix</p>
+              </div>
+
+              <!-- Primary Join Zoom Button -->
+              <a href="https://zoom.us" target="_blank" class="w-full py-3 bg-tealAccent hover:bg-emerald-400 text-obsidian rounded-xl text-xs font-bold font-display shadow-lg shadow-tealAccent/20 transition-all flex items-center justify-center gap-2">
+                <i data-lucide="video" class="w-4 h-4"></i>
+                <span>Join Live Class (Zoom)</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. Course Primary Grid (8 Cols Left Content + 4 Cols Right Sidebar) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          
+          <!-- LEFT: Class Content & Tab Panels (8 Cols) -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Navigation Tabs -->
+            <div class="bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-1 text-xs font-bold overflow-x-auto scrollbar-none">
+              <button onclick="switchTab('schedule')" id="tab-btn-schedule" class="px-3.5 sm:px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+                <i data-lucide="list-ordered" class="w-4 h-4"></i>
+                <span>Course Schedule</span>
+              </button>
+              <button onclick="switchTab('materials')" id="tab-btn-materials" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:text-obsidian hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+                <i data-lucide="folder-down" class="w-4 h-4"></i>
+                <span>Materials & Assets</span>
+              </button>
+              <button onclick="switchTab('assignments')" id="tab-btn-assignments" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:text-obsidian hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span>Assignments (1 Pending)</span>
+              </button>
+              <button onclick="switchTab('announcements')" id="tab-btn-announcements" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:text-obsidian hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+                <i data-lucide="megaphone" class="w-4 h-4"></i>
+                <span>Announcements</span>
+              </button>
+              <button onclick="switchTab('community')" id="tab-btn-community" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:text-obsidian hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Cohort Q&A</span>
+              </button>
+            </div>
+
+            <!-- TAB 1: COURSE SCHEDULE / CURRICULUM ACCORDION -->
+            <div id="tab-content-schedule" class="space-y-4">
+              
+              <!-- Week 1: Completed with Recording Available -->
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center font-bold text-xs font-mono shrink-0">
+                      W1
+                    </div>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-bold text-obsidian">Week 1 — Unity Fundamentals & Engine Setup</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Unity Hub, Editor Layout, GameObject & Component Model</p>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold shrink-0">
+                    Completed ✓
+                  </span>
+                </div>
+
+                <!-- Attached Recording & Assets -->
+                <div class="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200/80 flex flex-wrap items-center justify-between text-xs gap-2 sm:gap-3">
+                  <div class="flex flex-wrap items-center gap-3 text-slate-600">
+                    <a href="#" class="flex items-center gap-1.5 text-cobalt font-bold hover:underline">
+                      <i data-lucide="play" class="w-3.5 h-3.5"></i> Watch Recording (1h 45m)
+                    </a>
+                    <span class="text-slate-300 hidden sm:inline">|</span>
+                    <a href="#" class="flex items-center gap-1.5 hover:text-obsidian">
+                      <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Class Slides (PDF)
+                    </a>
+                  </div>
+                  <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono">Held: 10 Sept 2026</span>
+                </div>
+              </div>
+
+              <!-- Week 2: Completed with Recording Available -->
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center font-bold text-xs font-mono shrink-0">
+                      W2
+                    </div>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-bold text-obsidian">Week 2 — Game Objects, Prefabs & Scene Architecture</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">2D Tilemaps, Sprite Rendering, Layer Sorting, Prefab Variants</p>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold shrink-0">
+                    Completed ✓
+                  </span>
+                </div>
+
+                <div class="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200/80 flex flex-wrap items-center justify-between text-xs gap-2 sm:gap-3">
+                  <div class="flex flex-wrap items-center gap-3 text-slate-600">
+                    <a href="#" class="flex items-center gap-1.5 text-cobalt font-bold hover:underline">
+                      <i data-lucide="play" class="w-3.5 h-3.5"></i> Watch Recording (2h 10m)
+                    </a>
+                    <span class="text-slate-300 hidden sm:inline">|</span>
+                    <a href="#" class="flex items-center gap-1.5 hover:text-obsidian">
+                      <i data-lucide="download" class="w-3.5 h-3.5"></i> Tilemap Pack (.unitypackage)
+                    </a>
+                  </div>
+                  <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono">Held: 14 Sept 2026</span>
+                </div>
+              </div>
+
+              <!-- Week 3: Active / Next Live Class -->
+              <div class="bg-white rounded-2xl border-2 border-cobalt p-4 sm:p-5 shadow-md space-y-3 relative overflow-hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-blue-50 text-cobalt flex items-center justify-center font-bold text-xs font-mono shrink-0">
+                      W3
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h4 class="text-xs sm:text-sm font-bold text-obsidian">Week 3 — 2D Physics, RigidBody & Collision Matrix</h4>
+                        <span class="px-2 py-0.5 rounded bg-amber-50 text-amberAccent text-[10px] font-bold">Next Class</span>
+                      </div>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Colliders, Triggers, Physics Materials, and Event Listeners</p>
+                    </div>
+                  </div>
+                  <button class="px-3.5 py-2 rounded-xl bg-cobalt hover:bg-cobaltHover text-white text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                    <i data-lucide="video" class="w-3.5 h-3.5"></i> Join Live (8:00 PM)
+                  </button>
+                </div>
+
+                <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100 text-xs text-slate-600">
+                  <span>ক্লাস শুরু হলে সরাসরি উপরের বোতামে চাপ দিন। ক্লাসের রেকর্ডকৃত ভিডিও ক্লাস শেষ হওয়ার ২ ঘণ্টার মধ্যে এখানে যুক্ত হবে।</span>
+                </div>
+              </div>
+
+              <!-- Week 4: Upcoming / Locked -->
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-1 opacity-75">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center font-bold text-xs font-mono shrink-0">
+                      W4
+                    </div>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-bold text-slate-700">Week 4 — C# Scripting & Player Controller</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-400">Input System, Movement Vectors, Jump Mechanics, Animation States</p>
+                    </div>
+                  </div>
+                  <span class="text-xs text-slate-400 font-mono shrink-0">Starts next week</span>
+                </div>
+              </div>
+
+              <!-- Week 5 to 12 (Collapsed Summary) -->
+              <div class="p-4 bg-slate-100/70 rounded-2xl border border-slate-200/80 text-center text-xs text-slate-500">
+                + আরও ৮ সপ্তাহের পাঠ্যক্রম (AI Enemies, UI Systems, Audio, Level Progression, Play Store Deployment)
+              </div>
+            </div>
+
+            <!-- TAB 2: MATERIALS & DOWNLOADS -->
+            <div id="tab-content-materials" class="hidden space-y-4">
+              <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h4 class="text-sm font-bold text-obsidian">Project Assets & Downloads</h4>
+                <div class="space-y-3">
+                  <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-blue-100 text-cobalt flex items-center justify-center shrink-0">
+                        <i data-lucide="package" class="w-5 h-5"></i>
+                      </div>
+                      <div>
+                        <h5 class="text-xs font-bold text-obsidian">2D_Platformer_Starter_Assets.unitypackage</h5>
+                        <span class="text-[11px] text-slate-400">142 MB · Added by Mehedi Hasan</span>
+                      </div>
+                    </div>
+                    <button class="px-3 py-1.5 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg text-xs font-bold text-slate-700 flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                      <i data-lucide="download" class="w-3.5 h-3.5"></i> Download
+                    </button>
+                  </div>
+
+                  <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-emerald-100 text-tealAccent flex items-center justify-center shrink-0">
+                        <i data-lucide="file-code" class="w-5 h-5"></i>
+                      </div>
+                      <div>
+                        <h5 class="text-xs font-bold text-obsidian">Official Cohort GitHub Repository</h5>
+                        <span class="text-[11px] text-slate-400">github.com/dreamship/unity-cohort-2026</span>
+                      </div>
+                    </div>
+                    <a href="#" class="px-3 py-1.5 bg-obsidian text-white rounded-lg text-xs font-bold hover:bg-slate-800 flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Open Repo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: ASSIGNMENTS -->
+            <div id="tab-content-assignments" class="hidden space-y-4">
+              <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h4 class="text-sm font-bold text-obsidian">Batch Assignments & Submissions</h4>
+                <div class="space-y-3">
+                  <!-- Assignment 1 (Graded) -->
+                  <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                      <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Graded: 95/100</span>
+                      <h5 class="text-xs font-bold text-obsidian mt-1">Assignment 1: 2D Level Design with Rule Tiles</h5>
+                      <span class="text-[11px] text-slate-400">Submitted on 13 Sept</span>
+                    </div>
+                    <button class="text-xs font-bold text-cobalt hover:underline shrink-0">View Feedback</button>
+                  </div>
+
+                  <!-- Assignment 2 (Pending) -->
+                  <div class="p-4 bg-white rounded-xl border-2 border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+                    <div>
+                      <span class="text-[10px] font-bold text-amberAccent bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Deadline: Tuesday 11:59 PM</span>
+                      <h5 class="text-xs font-bold text-obsidian mt-1">Assignment 2: Character Controller & Physics Material</h5>
+                      <span class="text-[11px] text-slate-500">Submit GitHub repo link and WebGL build zip</span>
+                    </div>
+                    <button class="px-4 py-2 bg-amberAccent hover:bg-amberHover text-white rounded-xl text-xs font-bold shrink-0 self-start sm:self-auto">
+                      Submit Work
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: ANNOUNCEMENTS -->
+            <div id="tab-content-announcements" class="hidden space-y-4">
+              <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h4 class="text-sm font-bold text-obsidian">Batch Announcements</h4>
+                <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-100 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-cobalt flex items-center gap-1.5">
+                      <i data-lucide="pin" class="w-3.5 h-3.5"></i> Notice from Mehedi Hasan
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono">Yesterday at 6:30 PM</span>
+                  </div>
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    "সকল শিক্ষার্থীকে জানানো যাচ্ছে যে রবিবারের ক্লাসে আমরা Physics 2D এর উপর হ্যান্ডস-অন কোডিং করবো। আপনারা দয়া করে Unity 2022.3 LTS ভার্সন এবং VS Code রেডি করে ক্লাসে জয়েন করবেন। কোনো জুম লিঙ্ক মেসেঞ্জারে খোঁজার প্রয়োজন নেই, সরাসরি এই পেজের বোতাম থেকেই জয়েন করতে পারবেন।"
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 5: COHORT Q&A -->
+            <div id="tab-content-community" class="hidden space-y-4">
+              <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-sm font-bold text-obsidian">Cohort Discussion & Q&A</h4>
+                  <button class="px-3 py-1.5 bg-cobalt text-white rounded-xl text-xs font-bold">Ask Question</button>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-1">
+                    <span class="font-bold text-obsidian">Tanvir (CST, Rajshahi Polytechnic): "RigidBody2D-তে Continuous Collision Detection কখন ব্যবহার করতে হয়?"</span>
+                    <span class="text-[10px] text-slate-400 shrink-0">3 hours ago</span>
+                  </div>
+                  <p class="text-xs text-slate-600 bg-white p-3 rounded-lg border border-slate-100">
+                    <strong class="text-cobalt">Mehedi Hasan (Instructor):</strong> "যখন কোনো বুলেট বা ফাস্ট মুভিং অবজেক্ট পাতলা দেয়াল ভেদ করে চলে যায় (Tunneling effect), তখন CCD অন করতে হয়।"
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Instructor Card & Quick Batch Stats (4 Cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Instructor Profile Card -->
+            <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block border-b border-slate-100 pb-2">
+                Course Instructor
+              </span>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-obsidian text-white flex items-center justify-center font-bold text-base font-display shadow-md">
+                  MH
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-obsidian">Mehedi Hasan</h4>
+                  <p class="text-xs text-slate-500">Lead Game Developer & Mentor</p>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Unity 3D / C# গেম ডেভেলপমেন্ট ও আর্কেড সিস্টেমে অভিজ্ঞ। পলিটেকনিক ইঞ্জিনিয়ারদের ইন্ডাস্ট্রি-রেডি গেম প্রোগ্রামার হিসেবে গড়ে তুলতে মেন্টরিং করছেন।
+              </p>
+
+              <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="text-slate-500">Response Rate:</span>
+                <span class="font-bold text-emerald-600">Under 2 hours</span>
+              </div>
+            </div>
+
+            <!-- Attendance & Progress Card -->
+            <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block border-b border-slate-100 pb-2">
+                My Cohort Progress
+              </span>
+
+              <div class="space-y-3 text-xs">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-500">Live Class Attendance</span>
+                  <span class="font-mono font-bold text-obsidian">100% (2/2 Classes)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-500">Assignment Submissions</span>
+                  <span class="font-mono font-bold text-cobalt">1/2 Completed</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-500">Course Completion</span>
+                  <span class="font-mono font-bold text-tealAccent">25% (Week 3 of 12)</span>
+                </div>
+              </div>
+
+              <div class="w-full bg-slate-100 rounded-full h-2">
+                <div class="bg-cobalt h-2 rounded-full w-1/4"></div>
+              </div>
+            </div>
+
+            <!-- Entitlement Guarantee Info -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-500 space-y-1 font-mono">
+              <div class="text-slate-700 font-bold">Entitlement Identity:</div>
+              <div class="text-[11px] text-cobalt truncate">course:game-development-cohort-2026-09</div>
+              <p class="text-[10px] text-slate-400 font-sans pt-1">
+                লাইভ ক্লাস শেষে ভিডিও রেকর্ডিংগুলো অটোমেটিক এই ড্যাশবোর্ডে আজীবন সংরক্ষিত থাকবে।
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Interactive Tabs & Mobile Navigation JavaScript -->
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('mobile-sidebar-backdrop');
+      if (sidebar && backdrop) {
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+      }
+    }
+
+    function toggleP8Menu() {
+      const m = document.getElementById('p8-module-menu');
+      if (m) m.classList.toggle('hidden');
+    }
+
+    function switchTab(activeTabKey) {
+      const tabs = ['schedule', 'materials', 'assignments', 'announcements', 'community'];
+      
+      tabs.forEach(tab => {
+        const btn = document.getElementById(`tab-btn-${tab}`);
+        const content = document.getElementById(`tab-content-${tab}`);
+        
+        if (btn && content) {
+          if (tab === activeTabKey) {
+            btn.className = 'px-3.5 sm:px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0 whitespace-nowrap';
+            content.classList.remove('hidden');
+          } else {
+            btn.className = 'px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:text-obsidian hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap';
+            content.classList.add('hidden');
+          }
+        }
+      });
+      
+      lucide.createIcons();
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

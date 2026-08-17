@@ -1,0 +1,789 @@
+﻿<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamGlobal Hub — Study Abroad for Diploma Engineers | Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden"><div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside id="app-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300 ease-in-out">
+    <div>
+      <!-- Brand Logo -->
+      <div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+        <div class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+          <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+        </div>
+        <div>
+          <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+          <span class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+            <span class="font-display">Personalized Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="3.PersonalizedHome.html#learn" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400"></i>
+              <span>My Subjects</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamai" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+            <span>DreamAI</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamLabs</span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+            <span>Skills (DreamCert)</span>
+          </a>
+          <!-- Active DreamGlobal Nav -->
+          <a href="11.DreamGlobalHub.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-cobalt text-white font-semibold text-sm shadow-sm shadow-cobalt/25">
+            <div class="flex items-center gap-3">
+              <i data-lucide="globe" class="w-4 h-4"></i>
+              <span>DreamGlobal Hub</span>
+            </div>
+            <span id="nav-global-status-dot" class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+          <a href="5.DreamGlobalAddon.html" class="flex items-center gap-3 px-3 py-2 text-xs text-amber-600 hover:underline pl-8 font-semibold">
+            <span>Add-on Access Flow →</span>
+          </a>
+        </div>
+
+        <!-- CONNECT & PLATFORM -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">CONNECT & PLATFORM</span>
+          <a href="13.DreamCampus.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamCampus</span>
+            </div>
+            <span class="text-[9px] font-display font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">DPI</span>
+          </a>
+          <a href="14.DreamArena.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamArena</span>
+          </a>
+          <a href="12.CommunityHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="message-square" class="w-4 h-4 text-slate-400"></i>
+            <span>Community</span>
+          </a>
+          <a href="4.DreamCoreEngine.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+            <span>DreamCore Engine</span>
+          </a>
+          <a href="15.InstitutionsB2B.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+            <span>For Institutions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Footer -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">RH</div>
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport Canvas -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+    
+    <!-- Top Bar with Entitlement Switcher for Live Demo & All Modules Dropdown -->
+    <header class="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-bold text-slate-500 font-display">DreamGlobal — Study Abroad & Scholarship Hub</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="relative inline-block text-left" id="p11-module-wrapper">
+          <button onclick="toggleP11Menu()" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-obsidian text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span>All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p11-module-menu" class="hidden absolute right-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules</div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2. Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3. Personalized Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4. DreamCore Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5. DreamGlobal Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6. Pricing & Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10. DreamCert Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11. DreamGlobal Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12. Community Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13. DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14. DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15. B2B Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      function toggleP11Menu() {
+        const m = document.getElementById('p11-module-menu');
+        if (m) m.classList.toggle('hidden');
+      }
+    </script>
+      <div class="relative w-80">
+        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+        <input 
+          type="text" 
+          placeholder="দেশ, স্কলারশিপ, ক্রেডিট ট্রান্সফার বা পডকাস্ট খুঁজুন..." 
+          class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-cobalt focus:bg-white transition-all placeholder:text-slate-400"
+        >
+      </div>
+
+      <!-- Top Entitlement Toggle Bar -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono text-slate-400 uppercase hidden sm:inline">Access Entitlement:</span>
+          <button onclick="toggleGlobalSubscription()" id="btn-subscription-toggle" class="px-3 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-xs font-bold text-slate-700 transition-colors flex items-center gap-2 font-display">
+            <span id="sub-toggle-dot" class="w-2 h-2 rounded-full bg-tealAccent"></span>
+            <span id="sub-toggle-text">Active (৳২০০/mo)</span>
+          </button>
+        </div>
+
+        <button class="w-9 h-9 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 flex items-center justify-center">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <!-- DreamGlobal Hero Hub Header -->
+        <div class="bg-gradient-to-r from-obsidian via-[#141E46] to-obsidian text-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            
+            <div class="lg:col-span-7 space-y-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-tealAccent/20 text-tealAccent text-[10px] font-mono font-bold uppercase tracking-wider">
+                  DreamGlobal Hub
+                </span>
+                <span class="text-xs text-slate-300 font-display">Global Education & Credit Transfer for Diploma Engineers</span>
+              </div>
+              <h1 class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
+                পলিটেকনিকের পর বিশ্বের শীর্ষ ইউনিভার্সিটিতে ক্রেডিট ট্রান্সফার
+              </h1>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                অস্ট্রেলিয়া, জার্মানি, নিউজিল্যান্ড ও যুক্তরাজ্যে বিটিইবি ৪ বছরের ডিপ্লোমা ইঞ্জিনিয়ারদের অ্যাডমিশন পাথওয়ে, স্কলারশিপ রিকয়ারমেন্ট এবং এক্সক্লুসিভ পডকাস্ট।
+              </p>
+            </div>
+
+            <!-- Quick Podcast Spotlight Card -->
+            <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono uppercase font-bold text-tealAccent flex items-center gap-1.5">
+                  <i data-lucide="mic" class="w-3.5 h-3.5"></i> Featured Podcast
+                </span>
+                <span class="text-xs text-slate-300 font-mono">Episode #21</span>
+              </div>
+
+              <div>
+                <h4 class="text-sm font-bold text-white">How a Diploma Engineer Can Study in Australia</h4>
+                <p class="text-xs text-slate-300 mt-0.5">BTEB ডিপ্লোমা থেকে অস্ট্রেলিয়ান ব্যাচেলর ডিগ্রিতে ক্রেডিট এক্সেমপশন ও ভিসা রিকয়ারমেন্ট।</p>
+              </div>
+
+              <!-- Mini Audio Player -->
+              <div class="p-3 bg-obsidian/60 rounded-xl border border-white/10 flex items-center justify-between gap-3">
+                <button onclick="toggleAudioPreview()" id="btn-hero-play" class="w-8 h-8 rounded-lg bg-tealAccent text-obsidian flex items-center justify-center shrink-0 hover:bg-emerald-400 transition-colors">
+                  <i data-lucide="play" class="w-4 h-4 fill-current" id="hero-play-icon"></i>
+                </button>
+                <div class="flex-1 space-y-1">
+                  <div class="w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="bg-tealAccent h-full w-1/3"></div>
+                  </div>
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span>08:24</span>
+                    <span>26:40</span>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-slate-300 font-display">Free Stream</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- DreamGlobal Navigation & Feature Modules -->
+        <div class="space-y-6">
+          
+          <!-- Sub-module Tabs -->
+          <div class="bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-1 text-xs font-bold overflow-x-auto">
+            <button onclick="switchGlobalTab('overview')" id="tab-btn-overview" class="px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>Hub Overview</span>
+            </button>
+            <button onclick="switchGlobalTab('countries')" id="tab-btn-countries" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="globe-2" class="w-4 h-4 text-cobalt"></i>
+              <span>Explore Countries</span>
+            </button>
+            <button onclick="switchGlobalTab('scholarships')" id="tab-btn-scholarships" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-amberAccent"></i>
+              <span>Scholarships</span>
+            </button>
+            <button onclick="switchGlobalTab('podcasts')" id="tab-btn-podcasts" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="headphones" class="w-4 h-4 text-tealAccent"></i>
+              <span>DreamGlobal Podcasts</span>
+            </button>
+            <button onclick="switchGlobalTab('community')" id="tab-btn-community" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="users" class="w-4 h-4 text-purple-600"></i>
+              <span>Global Community</span>
+              <span id="tab-comm-lock-pill" class="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded font-mono hidden">Lock</span>
+            </button>
+            <button onclick="switchGlobalTab('ask')" id="tab-btn-ask" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0">
+              <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+              <span>Ask DreamGlobal</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: HUB OVERVIEW -->
+          <div id="tab-content-overview" class="space-y-8">
+            
+            <!-- 1. Country Quick Selector Grid -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-obsidian">Top Countries for Diploma Credit Transfer</h3>
+                  <p class="text-xs text-slate-500">পলিটেকনিক শিক্ষার্থীদের জন্য সর্বোচ্চ ক্রেডিট ট্রান্সফার ও ওয়ার্ক পারমিটের সুবিধাযুক্ত দেশসমূহ</p>
+                </div>
+                <button onclick="switchGlobalTab('countries')" class="text-xs font-bold text-cobalt hover:underline">সকল দেশ দেখুন →</button>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Australia Card -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-cobalt shadow-sm transition-all space-y-3 group cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="text-2xl">🇦🇺</span>
+                    <span class="px-2 py-0.5 bg-blue-50 text-cobalt text-[10px] font-mono font-bold rounded">1–1.5 Yrs Exemption</span>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian group-hover:text-cobalt transition-colors">Australia</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">AQF Level 6 Recognition · Post-study Work Visa up to 4 Years</p>
+                  </div>
+                  <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
+                    <span>IELTS: 6.0–6.5</span>
+                    <span class="text-cobalt font-bold">Explore Guide →</span>
+                  </div>
+                </div>
+
+                <!-- Germany Card -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-cobalt shadow-sm transition-all space-y-3 group cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="text-2xl">🇩🇪</span>
+                    <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-mono font-bold rounded">Zero Tuition Fees</span>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian group-hover:text-cobalt transition-colors">Germany</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Anabin H+ Status Verification · Public University Admissions</p>
+                  </div>
+                  <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
+                    <span>German/English</span>
+                    <span class="text-cobalt font-bold">Explore Guide →</span>
+                  </div>
+                </div>
+
+                <!-- New Zealand Card -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-cobalt shadow-sm transition-all space-y-3 group cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="text-2xl">🇳🇿</span>
+                    <span class="px-2 py-0.5 bg-purple-50 text-purple-700 text-[10px] font-mono font-bold rounded">NZQF Level 6</span>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian group-hover:text-cobalt transition-colors">New Zealand</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Direct Bachelor Degree Top-up Pathways for Polytechnic Grads</p>
+                  </div>
+                  <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
+                    <span>IELTS: 6.0</span>
+                    <span class="text-cobalt font-bold">Explore Guide →</span>
+                  </div>
+                </div>
+
+                <!-- Japan Card -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-cobalt shadow-sm transition-all space-y-3 group cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="text-2xl">🇯🇵</span>
+                    <span class="px-2 py-0.5 bg-orange-50 text-amberAccent text-[10px] font-mono font-bold rounded">Job Ready Track</span>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian group-hover:text-cobalt transition-colors">Japan</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Engineer Specialist Visa directly from BTEB Diploma</p>
+                  </div>
+                  <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
+                    <span>JLPT N3/N2</span>
+                    <span class="text-cobalt font-bold">Explore Guide →</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 2. DreamGlobal Podcast Series (The Hero Podcasting Component) -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="headphones" class="w-4 h-4 text-tealAccent"></i>
+                    <h3 class="text-base font-bold text-obsidian">DreamGlobal Podcast Series</h3>
+                  </div>
+                  <p class="text-xs text-slate-500">বিদেশে অধ্যয়নরত বাংলাদেশি ডিপ্লোমা ইঞ্জিনিয়ারদের বাস্তব অভিজ্ঞতা ও রোডম্যাপ</p>
+                </div>
+                <span class="text-xs font-mono font-bold text-slate-400">Weekly Episodes</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Episode 21 -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3 flex flex-col justify-between">
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="px-2 py-0.5 bg-blue-50 text-cobalt font-mono font-bold rounded text-[10px]">Episode 21</span>
+                      <span class="text-slate-400 font-mono text-[11px]">32 mins · Free</span>
+                    </div>
+                    <h4 class="text-sm font-bold text-obsidian leading-snug">How a Diploma Engineer Can Study in Australia</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Guest: <strong>Fahim Shahriar</strong> (Alumni, Dhaka Polytechnic → Currently at Deakin University).
+                    </p>
+                  </div>
+                  <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                    <button class="px-3 py-1.5 bg-cobalt hover:bg-cobaltHover text-white rounded-lg text-xs font-bold flex items-center gap-1.5">
+                      <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Listen
+                    </button>
+                    <button class="text-xs font-bold text-slate-500 hover:text-obsidian flex items-center gap-1">
+                      <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Transcript
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Episode 22 -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3 flex flex-col justify-between">
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 font-mono font-bold rounded text-[10px]">Episode 22</span>
+                      <span class="text-slate-400 font-mono text-[11px]">45 mins · Free</span>
+                    </div>
+                    <h4 class="text-sm font-bold text-obsidian leading-snug">Scholarships for Bangladeshi Polytechnic Students</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      ফুল-ফান্ডেড ও ৫০% টিউশন ফি ওয়েভারের যোগ্যতা, ডকুমেন্টেশন ও স্টেটমেন্ট অব পারপাস তৈরির নিয়ম।
+                    </p>
+                  </div>
+                  <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                    <button class="px-3 py-1.5 bg-cobalt hover:bg-cobaltHover text-white rounded-lg text-xs font-bold flex items-center gap-1.5">
+                      <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Listen
+                    </button>
+                    <button class="text-xs font-bold text-slate-500 hover:text-obsidian flex items-center gap-1">
+                      <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Transcript
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Episode 23 (Premium Pod) -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3 flex flex-col justify-between relative overflow-hidden" id="podcast-card-ep23">
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="px-2 py-0.5 bg-purple-50 text-purple-700 font-mono font-bold rounded text-[10px]">Episode 23</span>
+                      <span class="text-amberAccent font-mono font-bold text-[11px] flex items-center gap-1" id="ep23-premium-tag">
+                        <i data-lucide="lock" class="w-3 h-3"></i> Premium
+                      </span>
+                    </div>
+                    <h4 class="text-sm font-bold text-obsidian leading-snug">New Zealand Pathways After Diploma & Work Visa</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      অকল্যান্ড ও ক্রাইস্টচার্চে টেকনিক্যাল ইনস্টিটিউটে ডিরেক্ট ক্রেডিট ট্রান্সফার ও জব মার্কেট অ্যানালাইসিস।
+                    </p>
+                  </div>
+                  <div class="pt-3 border-t border-slate-100 flex items-center justify-between" id="ep23-action-container">
+                    <button class="px-3 py-1.5 bg-cobalt text-white rounded-lg text-xs font-bold flex items-center gap-1.5">
+                      <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Listen
+                    </button>
+                    <span class="text-[11px] font-mono text-slate-400">Exclusive Q&A</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 3. Gated Global Community Preview (Entitlement-Aware) -->
+            <div id="community-entitlement-block" class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl bg-blue-50 text-cobalt flex items-center justify-center">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian">DreamGlobal VIP Community & Mentor Network</h4>
+                    <p class="text-xs text-slate-500">বিদেশে অধ্যয়নরত ১,২০০+ সাবেক পলিটেকনিক ইঞ্জিনিয়ারদের সাথে সরাসরি যোগাযোগ</p>
+                  </div>
+                </div>
+                <span id="community-status-badge" class="px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold rounded-lg">
+                  ✓ Unlocked (DreamGlobal Add-on)
+                </span>
+              </div>
+
+              <!-- Unlocked State View -->
+              <div id="community-unlocked-view" class="space-y-3">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-cobalt text-white flex items-center justify-center font-bold">FS</div>
+                    <div>
+                      <span class="font-bold text-obsidian">Fahim Shahriar (Australia Chapter Lead):</span>
+                      <p class="text-slate-600">"Melbourne-এ যারা ২০২৩/২৪ সেশনের ক্রেডিট ট্রান্সফার নিয়ে আসছেন, তারা এই থ্রেডে ফাইল ড্রপ করুন।"</p>
+                    </div>
+                  </div>
+                  <button class="px-3 py-1.5 bg-cobalt text-white rounded-lg font-bold text-xs">View Thread</button>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">AK</div>
+                    <div>
+                      <span class="font-bold text-obsidian">Anisur Khan (Germany Student Mentor):</span>
+                      <p class="text-slate-600">"Public University APS সার্টিফিকেট সংক্রান্ত নতুন নিয়মাবলির বিস্তারিত পোস্ট।"</p>
+                    </div>
+                  </div>
+                  <button class="px-3 py-1.5 bg-cobalt text-white rounded-lg font-bold text-xs">View Thread</button>
+                </div>
+              </div>
+
+              <!-- Locked Fallback Banner (Shows when user doesn't have dreamglobal.premium) -->
+              <div id="community-locked-view" class="hidden p-8 bg-slate-50/70 rounded-2xl border border-dashed border-slate-300 text-center space-y-3">
+                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mx-auto">
+                  <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-obsidian">DreamGlobal VIP কমিউনিটি শুধুমাত্র সাবস্ক্রাইবারদের জন্য</h5>
+                  <p class="text-xs text-slate-500 max-w-md mx-auto mt-0.5">বিদেশের সিনিয়র ডিপ্লোমা ইঞ্জিনিয়ারদের সাথে নেটওয়ার্কিং, ভিসা ফাইল রিভিউ ও সরাসরি মেন্টরিং পেতে ড্রিমগ্লোবাল সাবস্ক্রিপশন সক্রিয় করুন।</p>
+                </div>
+                <button onclick="toggleGlobalSubscription()" class="px-5 py-2.5 rounded-xl bg-amberAccent hover:bg-amberHover text-white font-bold text-xs shadow-md shadow-amberAccent/20 transition-all font-display">
+                  + Add DreamGlobal (৳২০০/মাস)
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB 2: EXPLORE COUNTRIES -->
+          <div id="tab-content-countries" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+              <div>
+                <h3 class="text-lg font-bold text-obsidian">Country Destination Comparison for BTEB Graduates</h3>
+                <p class="text-xs text-slate-500">বাংলাদেশ কারিগরি শিক্ষা বোর্ডের ডিপ্লোমা ইঞ্জিনিয়ারদের জন্য দেশভিত্তিক ভর্তি শর্তাবলী</p>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left border-collapse">
+                  <thead>
+                    <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold">
+                      <th class="p-3.5">Country</th>
+                      <th class="p-3.5">Credit Transfer</th>
+                      <th class="p-3.5">Tuition Cost Range</th>
+                      <th class="p-3.5">Language Test</th>
+                      <th class="p-3.5">Post-Study Work</th>
+                      <th class="p-3.5 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                      <td class="p-3.5 font-bold flex items-center gap-2">🇦🇺 Australia</td>
+                      <td class="p-3.5 text-emerald-600 font-bold">Up to 1.5 Years</td>
+                      <td class="p-3.5 font-mono">$18,000–$32,000 AUD/yr</td>
+                      <td class="p-3.5">IELTS 6.0 / PTE 50</td>
+                      <td class="p-3.5">2–4 Years PSW</td>
+                      <td class="p-3.5 text-right"><button class="text-cobalt font-bold hover:underline">Full Guide →</button></td>
+                    </tr>
+                    <tr>
+                      <td class="p-3.5 font-bold flex items-center gap-2">🇩🇪 Germany</td>
+                      <td class="p-3.5 text-emerald-600 font-bold">Direct Bachelor 1st Yr</td>
+                      <td class="p-3.5 font-mono text-tealAccent font-bold">Free (Public Univ)</td>
+                      <td class="p-3.5">IELTS 6.5 / B2 German</td>
+                      <td class="p-3.5">18 Months PSW</td>
+                      <td class="p-3.5 text-right"><button class="text-cobalt font-bold hover:underline">Full Guide →</button></td>
+                    </tr>
+                    <tr>
+                      <td class="p-3.5 font-bold flex items-center gap-2">🇳🇿 New Zealand</td>
+                      <td class="p-3.5 text-emerald-600 font-bold">Up to 1 Year</td>
+                      <td class="p-3.5 font-mono">$16,000–$25,000 NZD/yr</td>
+                      <td class="p-3.5">IELTS 6.0 / PTE 50</td>
+                      <td class="p-3.5">3 Years PSW</td>
+                      <td class="p-3.5 text-right"><button class="text-cobalt font-bold hover:underline">Full Guide →</button></td>
+                    </tr>
+                    <tr>
+                      <td class="p-3.5 font-bold flex items-center gap-2">🇯🇵 Japan</td>
+                      <td class="p-3.5 text-cobalt font-bold">Direct Tech Visa / Top-up</td>
+                      <td class="p-3.5 font-mono">¥600,000–¥900,000/yr</td>
+                      <td class="p-3.5">JLPT N3/N2</td>
+                      <td class="p-3.5">Permanent Path</td>
+                      <td class="p-3.5 text-right"><button class="text-cobalt font-bold hover:underline">Full Guide →</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: SCHOLARSHIPS -->
+          <div id="tab-content-scholarships" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-obsidian">Polytechnic Merit Scholarships (2026 Intake)</h3>
+                  <p class="text-xs text-slate-500">আন্তর্জাতিক ইউনিভার্সিটিতে ডিপ্লোমা রেজাল্টের ভিত্তিতে ফি ওয়েভার</p>
+                </div>
+                <span class="text-xs font-mono bg-blue-50 text-cobalt px-2.5 py-1 rounded-lg font-bold">4 Active Grants</span>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                  <div class="space-y-1">
+                    <span class="text-[10px] font-bold uppercase text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Full Tuition Waiver</span>
+                    <h5 class="text-sm font-bold text-obsidian">Australian International Excellence Scholarship</h5>
+                    <p class="text-xs text-slate-500">CGPA 3.80+ in BTEB Diploma · Applicable for CST, Civil & Electrical graduates.</p>
+                  </div>
+                  <button class="px-4 py-2 bg-obsidian text-white rounded-xl text-xs font-bold hover:bg-slate-800">View Requirements</button>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                  <div class="space-y-1">
+                    <span class="text-[10px] font-bold uppercase text-cobalt bg-blue-50 px-2 py-0.5 rounded">50% Fee Grant</span>
+                    <h5 class="text-sm font-bold text-obsidian">New Zealand STEM Polytechnic Pathway Grant</h5>
+                    <p class="text-xs text-slate-500">Applicable across 6 universities in NZ for engineering degree completion.</p>
+                  </div>
+                  <button class="px-4 py-2 bg-obsidian text-white rounded-xl text-xs font-bold hover:bg-slate-800">View Requirements</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: PODCASTS (Complete List) -->
+          <div id="tab-content-podcasts" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-obsidian">DreamGlobal Official Podcast Audio Archive</h3>
+                  <p class="text-xs text-slate-500">সবগুলো পর্ব ও প্রিমিয়াম স্টাডি অ্যাব্রড ডিসকাশন</p>
+                </div>
+                <span class="text-xs font-mono font-bold text-slate-400">Total 23 Episodes</span>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                  <div class="flex items-center gap-4">
+                    <button class="w-10 h-10 rounded-xl bg-cobalt text-white flex items-center justify-center shrink-0">
+                      <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    </button>
+                    <div>
+                      <span class="text-[10px] font-mono font-bold text-cobalt">Episode 21</span>
+                      <h5 class="text-xs font-bold text-obsidian">How a Diploma Engineer Can Study in Australia</h5>
+                      <span class="text-[11px] text-slate-400">Credit recognition, AQF Level 6 guidelines and cost estimation</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono text-slate-500">32 mins</span>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                  <div class="flex items-center gap-4">
+                    <button class="w-10 h-10 rounded-xl bg-cobalt text-white flex items-center justify-center shrink-0">
+                      <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    </button>
+                    <div>
+                      <span class="text-[10px] font-mono font-bold text-cobalt">Episode 22</span>
+                      <h5 class="text-xs font-bold text-obsidian">Scholarships for Bangladeshi Polytechnic Students</h5>
+                      <span class="text-[11px] text-slate-400">How to secure tuition fee waivers and write convincing SOP</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono text-slate-500">45 mins</span>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                  <div class="flex items-center gap-4">
+                    <button class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+                      <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    </button>
+                    <div>
+                      <span class="text-[10px] font-mono font-bold text-purple-600">Episode 23 · VIP</span>
+                      <h5 class="text-xs font-bold text-obsidian">New Zealand Pathways After Diploma</h5>
+                      <span class="text-[11px] text-slate-400">NZQF assessment & direct technical job search strategies</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono text-slate-500">38 mins</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: ASK DREAMGLOBAL AI -->
+          <div id="tab-content-ask" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center">
+                  <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-obsidian">Ask DreamGlobal AI Counselor</h4>
+                  <p class="text-xs text-slate-500">আপনার ডিপ্লোমা টেকনোলজি, রেজাল্ট এবং বাজেট জানালে উপযুক্ত দেশ ও ইউনিভার্সিটির পরামর্শ দিবে</p>
+                </div>
+              </div>
+
+              <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong class="text-obsidian">DreamGlobal Advisor:</strong> "স্বাগতম রহিম! আপনি CST ৩য় পর্বে আছেন। অস্ট্রেলিয়া বা জার্মানিতে কম্পিউটার সায়েন্সে ক্রেডিট ট্রান্সফারের জন্য ৩য় ও ৪র্থ পর্বের ডেটা স্ট্রাকচার এবং অ্যালগরিদম সাবজেক্টের সিলেবাস ম্যাপিং জরুরি। কোনো নির্দিষ্ট দেশ সম্পর্কে জানতে চান?"
+                </div>
+                <div class="flex items-center gap-2">
+                  <input type="text" placeholder="যেমন: আমার CGPA 3.65 এবং বাজেট ১৫ লাখ, কোন দেশ উপযুক্ত?" class="flex-1 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-cobalt">
+                  <button class="px-5 py-2.5 bg-cobalt text-white font-bold text-xs rounded-xl hover:bg-cobaltHover">Ask Advisor</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- State & Interactive Script -->
+  <script>
+    let isGlobalSubscribed = true;
+    let isAudioPlaying = false;
+
+    function renderGlobalState() {
+      const toggleDot = document.getElementById('sub-toggle-dot');
+      const toggleText = document.getElementById('sub-toggle-text');
+      const navDot = document.getElementById('nav-global-status-dot');
+      const commBadge = document.getElementById('community-status-badge');
+      const commUnlocked = document.getElementById('community-unlocked-view');
+      const commLocked = document.getElementById('community-locked-view');
+      const ep23Tag = document.getElementById('ep23-premium-tag');
+
+      if (isGlobalSubscribed) {
+        toggleDot.className = 'w-2 h-2 rounded-full bg-tealAccent';
+        toggleText.innerText = 'Active (৳২০০/mo)';
+        navDot.className = 'w-2 h-2 rounded-full bg-tealAccent';
+        
+        commBadge.className = 'px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold rounded-lg';
+        commBadge.innerText = '✓ Unlocked (DreamGlobal Add-on)';
+        commUnlocked.classList.remove('hidden');
+        commLocked.classList.add('hidden');
+        
+        ep23Tag.innerHTML = '<span class="text-emerald-600 font-mono font-bold">Unlocked ✓</span>';
+      } else {
+        toggleDot.className = 'w-2 h-2 rounded-full bg-slate-300';
+        toggleText.innerText = 'Locked (Free Visitor)';
+        navDot.className = 'w-2 h-2 rounded-full bg-slate-300';
+        
+        commBadge.className = 'px-3 py-1 bg-slate-100 text-slate-500 border border-slate-200 text-xs font-mono font-bold rounded-lg flex items-center gap-1';
+        commBadge.innerHTML = '<i data-lucide="lock" class="w-3 h-3"></i> Premium Locked';
+        commUnlocked.classList.add('hidden');
+        commLocked.classList.remove('hidden');
+        
+        ep23Tag.innerHTML = '<i data-lucide="lock" class="w-3 h-3 text-amberAccent"></i> <span class="text-amberAccent">Premium</span>';
+      }
+
+      lucide.createIcons();
+    }
+
+    function toggleGlobalSubscription() {
+      isGlobalSubscribed = !isGlobalSubscribed;
+      renderGlobalState();
+    }
+
+    function switchGlobalTab(tabKey) {
+      const tabs = ['overview', 'countries', 'scholarships', 'podcasts', 'community', 'ask'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`tab-content-${t}`);
+        if (btn && content) {
+          if (t === tabKey) {
+            btn.className = 'px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0';
+            content.classList.remove('hidden');
+          } else {
+            btn.className = 'px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0';
+            content.classList.add('hidden');
+          }
+        }
+      });
+      lucide.createIcons();
+    }
+
+    function toggleAudioPreview() {
+      isAudioPlaying = !isAudioPlaying;
+      const btn = document.getElementById('btn-hero-play');
+      const icon = document.getElementById('hero-play-icon');
+      if (isAudioPlaying) {
+        btn.innerHTML = '<i data-lucide="pause" class="w-4 h-4 fill-current"></i>';
+      } else {
+        btn.innerHTML = '<i data-lucide="play" class="w-4 h-4 fill-current"></i>';
+      }
+      lucide.createIcons();
+    }
+
+    // Initialize State
+    renderGlobalState();
+  function toggleMobileSidebar() { const sidebar = document.getElementById('app-sidebar'); const backdrop = document.getElementById('mobile-sidebar-backdrop'); if (sidebar && backdrop) { sidebar.classList.toggle('-translate-x-full'); backdrop.classList.toggle('hidden'); } }
+    } 
+  </script>
+</body>
+</html>

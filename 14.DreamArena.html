@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamArena — National Polytechnic Competitions & Challenges | Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden">
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Sidebar Navigation (Responsive Drawer on Mobile/Tablet, Fixed on Desktop) -->
+  <aside id="app-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300 ease-in-out">
+    <div>
+      <!-- Brand Logo -->
+      <div class="h-16 px-6 flex items-center justify-between border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+            <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+          </div>
+          <div>
+            <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+            <span class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+          </div>
+        </div>
+        <!-- Mobile Close Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+            <span class="font-display">Personalized Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="3.PersonalizedHome.html#learn" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400"></i>
+              <span>My Subjects</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamai" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+            <span>DreamAI</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamLabs</span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+            <span>Skills (DreamCert)</span>
+          </a>
+          <a href="11.DreamGlobalHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamGlobal Hub</span>
+          </a>
+        </div>
+
+        <!-- CONNECT (DreamArena Active) -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">CONNECT</span>
+          <a href="13.DreamCampus.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamCampus</span>
+            </div>
+            <span class="text-[9px] font-display font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">DPI</span>
+          </a>
+          <!-- Active DreamArena Tab -->
+          <a href="14.DreamArena.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-cobalt text-white font-semibold text-sm shadow-sm shadow-cobalt/25">
+            <div class="flex items-center gap-3">
+              <i data-lucide="trophy" class="w-4 h-4 text-amber-300"></i>
+              <span>DreamArena</span>
+            </div>
+            <span class="text-[9px] font-display font-bold bg-white/20 px-1.5 py-0.5 rounded">Live Events</span>
+          </a>
+          <a href="12.CommunityHub.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="message-square" class="w-4 h-4 text-slate-400"></i>
+            <span>Community</span>
+          </a>
+        </div>
+
+        <!-- PROFILE & PLATFORM -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">PROFILE & PLATFORM</span>
+          <a href="8.LiveClassroom.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="play-circle" class="w-4 h-4 text-slate-400"></i>
+              <span>My Enrolled Classroom</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">1 Active</span>
+          </a>
+          <a href="4.DreamCoreEngine.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+            <span>DreamCore Engine</span>
+          </a>
+          <a href="6.PricingAndPlans.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="credit-card" class="w-4 h-4 text-slate-400"></i>
+            <span>Plans & Billing</span>
+          </a>
+          <a href="15.InstitutionsB2B.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+            <span>For Institutions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Footer -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">RH</div>
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport Canvas -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+    
+    <!-- Top Bar with Hamburger & Prize Pool Counter -->
+    <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors shrink-0">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <span class="text-xs font-bold text-slate-700 font-display truncate">DreamArena — Competitions & Hackathons</span>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Total Active Prize Pool Counter -->
+        <div class="px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-slate-900 text-white text-[11px] sm:text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm">
+          <span class="text-tealAccent hidden sm:inline">Active Prize Pool:</span>
+          <span class="text-amber-300 font-mono">৳১,৮৫,০০০</span>
+        </div>
+
+        <!-- All 14 Modules Dropdown Switcher -->
+        <div class="relative inline-block text-left" id="p14-module-wrapper">
+          <button onclick="toggleP14Menu()" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-obsidian text-white text-[11px] sm:text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span class="hidden sm:inline">All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p14-module-menu" class="hidden absolute right-0 mt-2 w-72 sm:w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules</div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2. Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3. Personalized Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4. DreamCore Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5. DreamGlobal Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6. Pricing & Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10. DreamCert Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11. DreamGlobal Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12. Community Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13. DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14. DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15. B2B Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+        
+        <!-- DreamArena Hero: Featured Active Competition Banner -->
+        <div class="bg-gradient-to-r from-obsidian via-[#111A3A] to-obsidian text-white p-5 sm:p-8 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+            
+            <div class="lg:col-span-7 space-y-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amberAccent text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amberAccent animate-ping"></span>
+                  Live National Game Jam
+                </span>
+                <span class="text-xs text-slate-300 font-mono">Category: Game Jam & Media</span>
+              </div>
+              
+              <h1 class="text-xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                National Polytechnic Game Jam 2026
+              </h1>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                বাংলাদেশের ৪৯টি সরকারি ও বেসরকারি পলিটেকনিকের শিক্ষার্থীদের জন্য ৭২ ঘণ্টার লাইভ গেম ডেভেলপমেন্ট হ্যাকাথন। থিম: <em>"Smart Bangladesh & Green Energy"</em>।
+              </p>
+
+              <!-- Sponsors Strip -->
+              <div class="pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-400">
+                <span class="text-[11px] font-mono uppercase">Organized by:</span>
+                <span class="text-white font-bold">DreamArena</span>
+                <span class="text-slate-600 hidden sm:inline">|</span>
+                <span class="text-slate-300">Promoted by DreamCampus Chapters</span>
+              </div>
+            </div>
+
+            <!-- Event Countdown & Action Card -->
+            <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/20 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono uppercase font-bold text-tealAccent">Submission Deadline</span>
+                <span class="text-xs text-amber-300 font-mono font-bold">৳৫০,০০০ প্রাইজমানি</span>
+              </div>
+
+              <!-- Countdown Timer Blocks -->
+              <div class="grid grid-cols-4 gap-1.5 sm:gap-2 text-center font-mono">
+                <div class="p-1.5 sm:p-2 bg-obsidian/60 rounded-xl border border-white/10">
+                  <span class="text-base sm:text-xl font-extrabold text-white block" id="timer-days">03</span>
+                  <span class="text-[9px] uppercase text-slate-400 font-sans">Days</span>
+                </div>
+                <div class="p-1.5 sm:p-2 bg-obsidian/60 rounded-xl border border-white/10">
+                  <span class="text-base sm:text-xl font-extrabold text-white block" id="timer-hours">14</span>
+                  <span class="text-[9px] uppercase text-slate-400 font-sans">Hours</span>
+                </div>
+                <div class="p-1.5 sm:p-2 bg-obsidian/60 rounded-xl border border-white/10">
+                  <span class="text-base sm:text-xl font-extrabold text-white block" id="timer-mins">28</span>
+                  <span class="text-[9px] uppercase text-slate-400 font-sans">Mins</span>
+                </div>
+                <div class="p-1.5 sm:p-2 bg-obsidian/60 rounded-xl border border-white/10">
+                  <span class="text-base sm:text-xl font-extrabold text-tealAccent block" id="timer-secs">45</span>
+                  <span class="text-[9px] uppercase text-slate-400 font-sans">Secs</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 sm:gap-3 pt-1">
+                <button onclick="openRegistrationModal('National Polytechnic Game Jam 2026', '৳৫০,০০০', 'Game Jam')" class="flex-1 py-2.5 sm:py-3 bg-amberAccent hover:bg-amberHover text-white rounded-xl text-xs font-bold font-display shadow-lg shadow-amberAccent/20 transition-all flex items-center justify-center gap-2">
+                  <i data-lucide="user-plus" class="w-4 h-4"></i>
+                  <span>Register Campus Team</span>
+                </button>
+                <button onclick="switchCategory('gamejam')" class="px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition-all border border-white/10 shrink-0">
+                  Rules
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Section Navigation: Event Categories -->
+        <div class="space-y-3">
+          <div class="bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-1 text-xs font-bold overflow-x-auto scrollbar-none">
+            <button onclick="switchCategory('all')" id="cat-all" class="px-3.5 sm:px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              <span>All Competitions</span>
+            </button>
+            <button onclick="switchCategory('prog')" id="cat-prog" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="code-2" class="w-4 h-4 text-cobalt"></i>
+              <span>Programming Contest</span>
+            </button>
+            <button onclick="switchCategory('cad')" id="cat-cad" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="box" class="w-4 h-4 text-emerald-600"></i>
+              <span>CAD Challenge</span>
+            </button>
+            <button onclick="switchCategory('gamejam')" id="cat-gamejam" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="gamepad-2" class="w-4 h-4 text-amberAccent"></i>
+              <span>Game Jam</span>
+            </button>
+            <button onclick="switchCategory('robotics')" id="cat-robotics" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="cpu" class="w-4 h-4 text-purple-600"></i>
+              <span>Robotics & IoT</span>
+            </button>
+            <button onclick="switchCategory('quiz')" id="cat-quiz" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="help-circle" class="w-4 h-4 text-tealAccent"></i>
+              <span>Quiz & Speedrun</span>
+            </button>
+            <button onclick="switchCategory('esports')" id="cat-esports" class="px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
+              <i data-lucide="crosshair" class="w-4 h-4 text-rose-600"></i>
+              <span>Esports League</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary 8 / 4 Grid: Competitions & Arena Leaderboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          
+          <!-- LEFT: Competition Cards Matrix (8 Cols) -->
+          <div class="lg:col-span-8 space-y-6" id="contests-grid">
+            
+            <!-- 1. Programming Contest Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 hover:border-cobalt shadow-sm transition-all p-5 sm:p-6 space-y-5 group contest-item" data-category="prog">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue-50 text-cobalt flex items-center justify-center font-bold text-xl shrink-0">
+                    <i data-lucide="code-2" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-md bg-blue-50 text-cobalt font-mono text-[10px] font-bold uppercase">
+                        Programming Contest
+                      </span>
+                      <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Live Registration
+                      </span>
+                    </div>
+                    <h3 class="text-base font-bold text-obsidian mt-1 group-hover:text-cobalt transition-colors">
+                      Inter-Polytechnic Speed Coding Championship (BTEB ICPC Format)
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right shrink-0">
+                  <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Prize Pool</span>
+                  <span class="text-lg font-extrabold font-mono text-cobalt">৳৩৫,০০০</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                সি, সি++ এবং পাইথনে ৪ ঘণ্টার নিবিড় প্রবলেম সলভিং কনটেস্ট। BTEB কারিকুলামের ডেটা স্ট্রাকচার, স্ট্যাক, কিউ, ট্রি এবং ডায়নামিক প্রোগ্রামিং প্রবলেম সেট।
+              </p>
+
+              <!-- Metadata & Actions -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100 text-xs">
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Contest Date</span>
+                  <strong class="text-obsidian font-mono">18 Sept 2026</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Team Format</span>
+                  <strong class="text-obsidian">Individual / Duo</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Platform</span>
+                  <strong class="text-obsidian font-mono">DreamArena Judge</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Registered</span>
+                  <strong class="text-cobalt font-mono">142 Teams</strong>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] text-slate-500">Promoted by <strong>Dhaka & Chattogram Polytechnic Chapters</strong></span>
+                <button onclick="openRegistrationModal('Inter-Polytechnic Speed Coding Championship', '৳৩৫,০০০', 'Programming')" class="px-5 py-2.5 bg-cobalt hover:bg-cobaltHover text-white rounded-xl font-bold text-xs shadow-md shadow-cobalt/20 transition-all font-display shrink-0 w-full sm:w-auto">
+                  Register Team
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. CAD Design Challenge Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 hover:border-cobalt shadow-sm transition-all p-5 sm:p-6 space-y-5 group contest-item" data-category="cad">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-emerald-50 text-tealAccent flex items-center justify-center font-bold text-xl shrink-0">
+                    <i data-lucide="box" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono text-[10px] font-bold uppercase">
+                        CAD Challenge
+                      </span>
+                      <span class="text-xs text-slate-500 font-mono">Civil & Mechanical Track</span>
+                    </div>
+                    <h3 class="text-base font-bold text-obsidian mt-1 group-hover:text-cobalt transition-colors">
+                      National CAD Drafting & 3D Structural Modeling Jam
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right shrink-0">
+                  <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Prize Pool</span>
+                  <span class="text-lg font-extrabold font-mono text-emerald-600">৳২৫,০০০</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                AutoCAD ও Revit-এ ২৪ ঘণ্টার দ্রুত আর্কিটেকচারাল ফ্লোর প্ল্যান ও ৩ডি স্ট্রাকচারাল ফ্রেম ডিজাইন চ্যালেঞ্জ। বিচারক প্যানেলে থাকবেন বিশিষ্ট সিভিল ইঞ্জিনিয়ার ও কনসালট্যান্টবৃন্দ।
+              </p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100 text-xs">
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Contest Date</span>
+                  <strong class="text-obsidian font-mono">22 Sept 2026</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Software</span>
+                  <strong class="text-obsidian">AutoCAD / BIM</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Format</span>
+                  <strong class="text-obsidian">Online Entry</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Registered</span>
+                  <strong class="text-emerald-600 font-mono">88 Teams</strong>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] text-slate-500">Sponsored by <strong>DreamCert Engineering Wing</strong></span>
+                <button onclick="openRegistrationModal('National CAD Drafting & Structural Jam', '৳২৫,০০০', 'CAD')" class="px-5 py-2.5 bg-obsidian hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition-all font-display shrink-0 w-full sm:w-auto">
+                  Register Design Entry
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Robotics & IoT Competition Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 hover:border-cobalt shadow-sm transition-all p-5 sm:p-6 space-y-5 group contest-item" data-category="robotics">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xl shrink-0">
+                    <i data-lucide="cpu" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-md bg-purple-50 text-purple-700 font-mono text-[10px] font-bold uppercase">
+                        Robotics & Automation
+                      </span>
+                      <span class="text-xs text-amber-600 font-bold bg-amber-50 px-2 py-0.5 rounded">
+                        Hardware Showcase
+                      </span>
+                    </div>
+                    <h3 class="text-base font-bold text-obsidian mt-1 group-hover:text-cobalt transition-colors">
+                      Polytechnic Line Follower & Industrial IoT Challenge
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right shrink-0">
+                  <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Prize Pool</span>
+                  <span class="text-lg font-extrabold font-mono text-purple-700">৳৪০,০০০</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                রোবোটিক্স ও অটোমেশন প্রজেক্ট প্রদর্শনী। লাইন ফলোয়ার রোবট ট্র্যাক রেস এবং ইন্ডাস্ট্রিয়াল পিএলসি ও আরডুইনো বেইজড স্মার্ট ফ্যাক্টরি আইওটি সলিউশন প্রদর্শনী।
+              </p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100 text-xs">
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Venue / Format</span>
+                  <strong class="text-obsidian">Dhaka Poly Hub</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Team Size</span>
+                  <strong class="text-obsidian">Up to 4 Members</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Registration</span>
+                  <strong class="text-obsidian font-mono">Till 25 Sept</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 uppercase font-bold block">Hardware</span>
+                  <strong class="text-purple-600">LFR / IoT</strong>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] text-slate-500">Supported by <strong>Dreamship Labs Engine</strong></span>
+                <button onclick="openRegistrationModal('Polytechnic Line Follower & IoT Challenge', '৳৪০,০০০', 'Robotics')" class="px-5 py-2.5 bg-obsidian hover:bg-slate-800 text-white rounded-xl font-bold text-xs transition-all font-display shrink-0 w-full sm:w-auto">
+                  Register Robot Team
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Quiz & Speedrun Competition Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 hover:border-cobalt shadow-sm transition-all p-5 sm:p-6 space-y-5 group contest-item" data-category="quiz">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-teal-50 text-tealAccent flex items-center justify-center font-bold text-xl shrink-0">
+                    <i data-lucide="zap" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-md bg-teal-50 text-tealAccent font-mono text-[10px] font-bold uppercase">
+                        Live Speedrun Quiz
+                      </span>
+                      <span class="text-xs text-cobalt font-mono">BTEB Board Rapid Fire</span>
+                    </div>
+                    <h3 class="text-base font-bold text-obsidian mt-1 group-hover:text-cobalt transition-colors">
+                      Polytechnic Engineering Quiz Bowl (Live Timer Battle)
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right shrink-0">
+                  <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Prize Pool</span>
+                  <span class="text-lg font-extrabold font-mono text-tealAccent">৳১৫,০০০</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                পদার্থ, রসায়ন, বেসিক ইলেকট্রিসিটি ও গণিত-৩ এর উপর ৩০ মিনিটের রিয়েল-টাইম মাল্টিপ্লেয়ার এমসিকিউ ব্যাটল। প্রতি শুক্রবার সন্ধ্যায় সরাসরি ড্রিমঅ্যারিনা প্লাটফর্মে।
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] font-mono text-slate-500">Every Friday · 9:00 PM Live</span>
+                <button onclick="openRegistrationModal('Polytechnic Engineering Quiz Bowl', '৳১৫,০০০', 'Quiz')" class="px-5 py-2.5 bg-tealAccent hover:bg-emerald-400 text-obsidian rounded-xl font-bold text-xs transition-all font-display shrink-0 w-full sm:w-auto">
+                  Join Friday Speedrun
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Esports Tournament Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 hover:border-cobalt shadow-sm transition-all p-5 sm:p-6 space-y-5 group contest-item" data-category="esports">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-xl shrink-0">
+                    <i data-lucide="crosshair" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-md bg-rose-50 text-rose-600 font-mono text-[10px] font-bold uppercase">
+                        Esports Championship
+                      </span>
+                      <span class="text-xs text-slate-500 font-mono">Valorant & Mobile Legends</span>
+                    </div>
+                    <h3 class="text-base font-bold text-obsidian mt-1 group-hover:text-cobalt transition-colors">
+                      Inter-Polytechnic Esports League 2026
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right shrink-0">
+                  <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Prize Pool</span>
+                  <span class="text-lg font-extrabold font-mono text-rose-600">৳২০,০০০</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed">
+                পলিটেকনিক চ্যাপ্টারগুলোর মধ্যকার অফিসিয়াল ইন্টার-ক্যাম্পাস ইস্পোর্টস লিগ। প্রতিটি ইনস্টিটিউট থেকে সর্বাধিক ২টি স্কোয়াড অংশ নিতে পারবে।
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] text-slate-500">Live Broadcast on <strong>Dreamship YouTube</strong></span>
+                <button onclick="openRegistrationModal('Inter-Polytechnic Esports League 2026', '৳২০,০০০', 'Esports')" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-xs transition-all font-display shrink-0 w-full sm:w-auto">
+                  Register Squad
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: National Campus Leaderboard & Arena Engine Architecture (4 Cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <!-- Ecosystem Flow Architecture Box -->
+            <div class="bg-gradient-to-br from-obsidian via-slate-900 to-obsidian text-white p-5 sm:p-6 rounded-3xl shadow-sm border border-slate-800 space-y-4">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-tealAccent block border-b border-white/10 pb-2">
+                Dreamship Ecosystem Flow
+              </span>
+
+              <div class="space-y-3 font-mono text-xs">
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="users" class="w-4 h-4 text-cobalt"></i>
+                    <span>DreamCampus</span>
+                  </div>
+                  <span class="text-[10px] text-slate-400">Community & Clubs</span>
+                </div>
+
+                <div class="text-center text-tealAccent">
+                  <i data-lucide="arrow-down" class="w-4 h-4 mx-auto animate-bounce"></i>
+                </div>
+
+                <div class="p-3 bg-tealAccent/15 rounded-xl border border-tealAccent/30 flex items-center justify-between text-tealAccent font-bold">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="trophy" class="w-4 h-4 text-amber-300"></i>
+                    <span>DreamArena</span>
+                  </div>
+                  <span class="text-[10px] uppercase">Contest Engine</span>
+                </div>
+
+                <div class="text-center text-tealAccent">
+                  <i data-lucide="arrow-down" class="w-4 h-4 mx-auto"></i>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-center justify-between text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+                    <span>National Standings</span>
+                  </div>
+                  <span class="text-[10px] text-slate-400">Awards & Cash</span>
+                </div>
+              </div>
+
+              <p class="text-[11px] text-slate-400 leading-relaxed font-sans pt-1">
+                ক্যাম্পাস ক্লাবগুলো ড্রিমঅ্যারিনার ইভেন্ট প্রচার করে এবং চ্যাপ্টার টিম হিসেবে প্রতিযোগিতায় অংশগ্রহণ করে।
+              </p>
+            </div>
+
+            <!-- National Polytechnic Chapter Leaderboard Widget -->
+            <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div>
+                  <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">National Standings</h4>
+                  <h5 class="text-sm font-bold text-obsidian">Polytechnic Leaderboard</h5>
+                </div>
+                <span class="text-[10px] font-mono bg-blue-50 text-cobalt px-2 py-0.5 rounded font-bold">Season 2026</span>
+              </div>
+
+              <div class="space-y-2.5 text-xs">
+                <!-- Rank 1: Dhaka Polytechnic -->
+                <div class="p-3 bg-amber-50/70 border border-amber-200/80 rounded-2xl flex items-center justify-between">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-6 h-6 rounded-full bg-amberAccent text-white font-mono font-bold text-xs flex items-center justify-center shrink-0">1</span>
+                    <div class="min-w-0">
+                      <h6 class="font-bold text-obsidian truncate">Dhaka Poly (DPI)</h6>
+                      <span class="text-[10px] text-slate-500">6 Gold · 4 Silver</span>
+                    </div>
+                  </div>
+                  <span class="font-mono font-extrabold text-amber-700 shrink-0">1,420 pts</span>
+                </div>
+
+                <!-- Rank 2: Chattogram Polytechnic -->
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-mono font-bold text-xs flex items-center justify-center shrink-0">2</span>
+                    <div class="min-w-0">
+                      <h6 class="font-bold text-obsidian truncate">Chattogram Poly (CPI)</h6>
+                      <span class="text-[10px] text-slate-500">4 Gold · 5 Silver</span>
+                    </div>
+                  </div>
+                  <span class="font-mono font-extrabold text-slate-700 shrink-0">1,180 pts</span>
+                </div>
+
+                <!-- Rank 3: Rajshahi Polytechnic -->
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-6 h-6 rounded-full bg-amber-800/20 text-amber-900 font-mono font-bold text-xs flex items-center justify-center shrink-0">3</span>
+                    <div class="min-w-0">
+                      <h6 class="font-bold text-obsidian truncate">Rajshahi Poly (RPI)</h6>
+                      <span class="text-[10px] text-slate-500">3 Gold · 3 Silver</span>
+                    </div>
+                  </div>
+                  <span class="font-mono font-extrabold text-slate-700 shrink-0">940 pts</span>
+                </div>
+
+                <!-- Rank 4: Sylhet Polytechnic -->
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-500 font-mono font-bold text-xs flex items-center justify-center shrink-0">4</span>
+                    <div class="min-w-0">
+                      <h6 class="font-bold text-obsidian truncate">Sylhet Poly (SPI)</h6>
+                      <span class="text-[10px] text-slate-500">2 Gold · 2 Silver</span>
+                    </div>
+                  </div>
+                  <span class="font-mono font-extrabold text-slate-700 shrink-0">720 pts</span>
+                </div>
+              </div>
+
+              <button class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-all text-center">
+                View Full 49 Polytechnic Rankings →
+              </button>
+            </div>
+
+            <!-- Hall of Fame / Previous Winners -->
+            <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-2">
+                <i data-lucide="medal" class="w-4 h-4 text-amberAccent"></i>
+                <h4 class="text-xs font-bold text-obsidian uppercase tracking-wider">DreamArena Hall of Fame</h4>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                গত মাসের <em>"National CAD Design Challenge"</em> বিজয়ী: <strong>দল 'DPI Architects'</strong> (Dhaka Polytechnic Institute)।
+              </p>
+              <div class="pt-1 text-[11px] text-cobalt font-bold hover:underline cursor-pointer">
+                বিজয়ীদের প্রজেক্ট আর্কাইভ দেখুন →
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Interactive Contest Team Registration Modal (Responsive Container) -->
+  <div id="arena-reg-modal" class="fixed inset-0 z-50 bg-obsidian/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col transform transition-all">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 bg-gradient-to-r from-obsidian via-slate-900 to-obsidian text-white relative shrink-0">
+        <button onclick="closeRegistrationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/10 text-amberAccent flex items-center justify-center mb-3">
+          <i data-lucide="trophy" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </div>
+        <h3 class="text-lg sm:text-xl font-bold" id="modal-contest-title">Contest Team Registration</h3>
+        <p class="text-xs text-slate-300 mt-1" id="modal-contest-meta">Prize Pool: ৳৫০,০০০ · DreamArena National Engine</p>
+      </div>
+
+      <!-- Registration Form (Scrollable Body) -->
+      <form onsubmit="handleRegistrationSubmit(event)" class="p-5 sm:p-6 space-y-4 text-xs overflow-y-auto flex-1">
+        
+        <div>
+          <label class="font-bold text-slate-700 block mb-1">টিমের নাম (Team Name)</label>
+          <input type="text" placeholder="যেমন: DPI Logic Hackers" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-cobalt">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">ক্যাম্পাস চ্যাপ্টার (Institute)</label>
+            <select class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-cobalt">
+              <option selected>Dhaka Polytechnic Institute</option>
+              <option>Chattogram Polytechnic Institute</option>
+              <option>Rajshahi Polytechnic Institute</option>
+              <option>Sylhet Polytechnic Institute</option>
+              <option>Other BTEB Institute</option>
+            </select>
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">টিম লিডার (Student ID)</label>
+            <input type="text" value="Rahim Hasan (589211)" readonly class="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-slate-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="font-bold text-slate-700 block mb-1">টিম মেম্বার ২ (ঐচ্ছিক / Duo / Squad)</label>
+          <input type="text" placeholder="মেম্বার ২ এর নাম ও স্টুডেন্ট রোল" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-cobalt">
+        </div>
+
+        <div>
+          <label class="font-bold text-slate-700 block mb-1">গিটহাব / পোর্টফোলিও লিঙ্ক (প্রজেক্ট জমাদানের জন্য)</label>
+          <input type="url" placeholder="https://github.com/your-team" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-cobalt">
+        </div>
+
+        <div class="p-3 bg-blue-50/70 rounded-xl border border-blue-100 text-[11px] text-slate-600 flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-cobalt shrink-0"></i>
+          <span>আপনার রেজিস্ট্রেশনটি স্বয়ংক্রিয়ভাবে <strong>Dhaka Polytechnic Chapter</strong>-এর অ্যাকাউন্টে স্কোর যুক্ত করবে।</span>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+          <span class="text-[10px] text-slate-400 font-mono">Free Registration · Open Arena</span>
+          <button type="submit" id="btn-submit-reg" class="px-5 sm:px-6 py-2.5 bg-amberAccent hover:bg-amberHover text-white font-bold text-xs rounded-xl shadow-lg shadow-amberAccent/20 transition-all font-display shrink-0">
+            Confirm Registration
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Interactive Category Filter & Mobile Navigation JavaScript -->
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('mobile-sidebar-backdrop');
+      if (sidebar && backdrop) {
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+      }
+    }
+
+    function toggleP14Menu() {
+      const m = document.getElementById('p14-module-menu');
+      if (m) m.classList.toggle('hidden');
+    }
+
+    function switchCategory(catKey) {
+      const categories = ['all', 'prog', 'cad', 'gamejam', 'robotics', 'quiz', 'esports'];
+      
+      // Update Tab Styles
+      categories.forEach(c => {
+        const btn = document.getElementById(`cat-${c}`);
+        if (btn) {
+          if (c === catKey) {
+            btn.className = 'px-3.5 sm:px-4 py-2.5 rounded-xl bg-cobalt text-white shadow-sm transition-all flex items-center gap-2 shrink-0 whitespace-nowrap';
+          } else {
+            btn.className = 'px-3.5 sm:px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 shrink-0 whitespace-nowrap';
+          }
+        }
+      });
+
+      // Filter Cards
+      const items = document.querySelectorAll('.contest-item');
+      items.forEach(item => {
+        if (catKey === 'all' || item.getAttribute('data-category') === catKey) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      lucide.createIcons();
+    }
+
+    function openRegistrationModal(title, prize, category) {
+      document.getElementById('modal-contest-title').innerText = title;
+      document.getElementById('modal-contest-meta').innerText = `Prize Pool: ${prize} · Category: ${category} · DreamArena Engine`;
+      document.getElementById('arena-reg-modal').classList.remove('hidden');
+    }
+
+    function closeRegistrationModal() {
+      document.getElementById('arena-reg-modal').classList.add('hidden');
+    }
+
+    function handleRegistrationSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit-reg');
+      if (btn) btn.innerText = 'Registering Team...';
+
+      setTimeout(() => {
+        alert('অভিনন্দন! আপনার ক্যাম্পাস টিমটি ড্রিমঅ্যারিনাতে সফলভাবে রেজিস্টার্ড হয়েছে। কনটেস্ট শুরু হওয়ার পূর্বে ইমেইলে বিচারক গাইডলাইন পাঠানো হবে।');
+        if (btn) btn.innerText = 'Confirm Registration';
+        closeRegistrationModal();
+      }, 500);
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

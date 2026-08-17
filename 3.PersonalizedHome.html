@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized Student Home — Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden">
+  <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()"
+    class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside
+    class="w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto">
+    <div>
+      <!-- Brand Logo -->
+      <div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+        <div
+          class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+          <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+        </div>
+        <div>
+          <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+          <span
+            class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-xl bg-cobalt text-white font-semibold text-sm shadow-sm shadow-cobalt/25">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span class="font-display">Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="#learn"
+            class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+              <span>My Subjects</span>
+            </div>
+            <span id="badge-subject-count"
+              class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="#dreamai"
+            class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <div class="flex items-center gap-3">
+              <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+              <span>DreamAI Tutor</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+          <a href="#dreamlabs"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>DreamLabs</span>
+          </a>
+          <a href="#practice"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="check-square" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>Practice & Exams</span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+            <span>Skills (DreamCert)</span>
+          </a>
+          <a href="11.DreamGlobalHub.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>DUET Prep</span>
+          </a>
+          <a href="10.DreamCertHub.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="briefcase" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>Career</span>
+          </a>
+          <a href="5.DreamGlobalAddon.html"
+            class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600 font-medium text-sm transition-colors group">
+            <div class="flex items-center gap-3">
+              <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamGlobal</span>
+            </div>
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-amber-500"></i>
+          </a>
+        </div>
+
+        <!-- CONNECT -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">CONNECT</span>
+          <a href="13.DreamCampus.html"
+            class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <div class="flex items-center gap-3">
+              <i data-lucide="users" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+              <span>DreamCampus</span>
+            </div>
+            <span class="text-[9px] font-display font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">DPI</span>
+          </a>
+          <a href="14.DreamArena.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>DreamArena</span>
+          </a>
+          <a href="12.CommunityHub.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="message-square" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>Community</span>
+          </a>
+        </div>
+
+        <!-- PROFILE & PLATFORM -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">PLATFORM &
+            ACCOUNT</span>
+          <a href="8.LiveClassroom.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="play-circle" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>My Enrolled Courses</span>
+          </a>
+          <a href="4.DreamCoreEngine.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+            <span>DreamCore Engine</span>
+          </a>
+          <a href="6.PricingAndPlans.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="credit-card" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>Plans & Billing</span>
+          </a>
+          <a href="15.InstitutionsB2B.html"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-cobalt font-medium text-sm transition-colors group">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400 group-hover:text-cobalt"></i>
+            <span>For Institutions (B2B)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Footer Info -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div id="user-avatar"
+          class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">
+          RH
+        </div>
+        <div class="min-w-0 flex-1">
+          <h5 id="user-name-card" class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p id="user-subtitle-card" class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+
+    <!-- Top Bar with Interactive Demo Profile Switcher & Module Dropdown -->
+    <header
+      class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between shrink-0 gap-2">
+      <!-- Mobile Menu Button & Interactive Profile Switcher -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="toggleMobileSidebar()"
+          class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <div
+          class="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 text-[11px] sm:text-xs font-bold font-display overflow-x-auto max-w-[220px] sm:max-w-none">
+          <button onclick="switchDepartment('cst')" id="tab-cst"
+            class="px-2.5 sm:px-3 py-1 rounded-lg bg-white text-cobalt shadow-sm transition-all whitespace-nowrap">
+            CST
+          </button>
+          <button onclick="switchDepartment('civil')" id="tab-civil"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-slate-600 hover:text-obsidian transition-all whitespace-nowrap">
+            Civil
+          </button>
+          <button onclick="switchDepartment('electrical')" id="tab-electrical"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-slate-600 hover:text-obsidian transition-all whitespace-nowrap">
+            Electrical
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick 14-Module Switcher & Notifications -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="relative inline-block text-left" id="p3-module-wrapper">
+          <button onclick="toggleP3Menu()"
+            class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-obsidian text-white text-[11px] sm:text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span class="hidden sm:inline">All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p3-module-menu"
+            class="hidden absolute right-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules
+            </div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main
+                  Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2.
+                  Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3.
+                  Personalized
+                  Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4.
+                  DreamCore
+                  Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5.
+                  DreamGlobal
+                  Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6.
+                  Pricing &
+                  Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live
+                  Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live
+                  Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10.
+                  DreamCert
+                  Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11.
+                  DreamGlobal
+                  Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12.
+                  Community
+                  Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13.
+                  DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14.
+                  DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15.
+                  B2B
+                  Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="w-9 h-9 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 flex items-center justify-center relative">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="w-2 h-2 rounded-full bg-amberAccent absolute top-2 right-2 ring-2 ring-white"></span>
+        </button>
+      </div>
+    </header>
+
+    <script>
+      function toggleP3Menu() {
+        const m = document.getElementById('p3-module-menu');
+        if (m) m.classList.toggle('hidden');
+      }
+    </script>
+
+    <!-- Quick Academic Badge & Notifications -->
+    <div class="flex items-center gap-4">
+      <div
+        class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-cobalt">
+        <span class="w-2 h-2 rounded-full bg-tealAccent animate-pulse"></span>
+        <span id="header-academic-pill">Diploma in CST · 3rd Sem (Reg 2022)</span>
+      </div>
+
+      <button
+        class="w-9 h-9 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 flex items-center justify-center relative">
+        <i data-lucide="bell" class="w-4 h-4"></i>
+        <span class="w-2 h-2 rounded-full bg-amberAccent absolute top-2 right-2 ring-2 ring-white"></span>
+      </button>
+    </div>
+    </header>
+
+    <!-- Scrollable Personalized Dashboard -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-8">
+
+        <!-- 1. Personalized Greeting -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 id="greeting-title" class="text-2xl font-bold text-obsidian tracking-tight">শুভ দুপুর, Rahim 👋</h1>
+            <p id="greeting-subtitle" class="text-xs text-slate-500 mt-0.5">Diploma in Computer Science & Technology ·
+              3rd Semester · Dhaka Polytechnic</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="px-4 py-2 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
+              <i data-lucide="flame" class="w-5 h-5 text-amberAccent"></i>
+              <div>
+                <span class="text-[10px] uppercase font-display font-bold text-slate-400 block">Daily Practice</span>
+                <span class="text-xs font-bold text-obsidian font-display">Continue Today's Set</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary 8 / 4 Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- LEFT COLUMN (8 cols): Academic Foundation & AI -->
+          <div class="lg:col-span-8 space-y-8">
+
+            <!-- 2. CONTINUE LEARNING (Auto-curated to current active unit) -->
+            <div
+              class="bg-gradient-to-r from-obsidian via-slate-900 to-obsidian text-white p-6 rounded-2xl shadow-md relative overflow-hidden">
+              <div class="relative z-10 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="px-2.5 py-1 rounded-md bg-tealAccent/15 border border-tealAccent/30 text-tealAccent text-[11px] font-display font-bold uppercase tracking-wider">
+                    Continue Learning
+                  </span>
+                  <span id="continue-progress-text" class="text-xs text-slate-300 font-display">65% Completed</span>
+                </div>
+
+                <div>
+                  <span id="continue-code" class="text-xs text-slate-400 font-display">Subject Code: 28531</span>
+                  <h3 id="continue-title" class="text-lg font-bold text-white mt-0.5">Digital Electronics → Boolean
+                    Algebra & Logic Gates</h3>
+                  <p id="continue-desc" class="text-xs text-slate-300 mt-1">অধ্যায় ৩: ডি মরগ্যানের উপপাদ্য এবং লজিক
+                    সার্কিট সিমুলেশন</p>
+                </div>
+
+                <div class="w-full bg-slate-800 rounded-full h-2">
+                  <div id="continue-progress-bar"
+                    class="bg-tealAccent h-2 rounded-full w-2/3 transition-all duration-500"></div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 pt-1">
+                  <button
+                    class="px-5 py-2.5 rounded-xl bg-cobalt hover:bg-cobaltHover text-white text-xs font-bold shadow-sm transition-colors flex items-center gap-2">
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                    <span>পাঠ শুরু করুন</span>
+                  </button>
+                  <button
+                    class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-colors flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5 text-tealAccent"></i>
+                    <span id="continue-lab-btn">Launch in DreamLabs</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. DREAMAI TUTOR (Contextual to current semester subjects) -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-tealAccent flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="text-sm font-bold text-obsidian">DreamAI Subject Assistant</h4>
+                </div>
+                <span id="ai-badge"
+                  class="text-[10px] font-display font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  Ready · CST 3rd Sem Context
+                </span>
+              </div>
+
+              <div class="relative">
+                <input type="text" id="ai-search-input"
+                  placeholder="বর্তমান সেমিস্টারের যেকোনো বিষয় থেকে সরাসরি প্রশ্ন করুন..."
+                  class="w-full pl-4 pr-24 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-cobalt focus:bg-white transition-all placeholder:text-slate-400">
+                <button
+                  class="absolute right-2 top-1/2 -translate-y-1/2 px-3.5 py-1.5 bg-obsidian hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition-all">
+                  Ask AI
+                </button>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2 pt-1" id="ai-quick-prompts">
+                <!-- Dynamically populated chips -->
+              </div>
+            </div>
+
+            <!-- 4. MY SUBJECTS (BTEB Official Curriculum Mapped) -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 id="subjects-heading" class="text-base font-bold text-obsidian">My Subjects (CST 3rd Semester)
+                  </h3>
+                  <p class="text-xs text-slate-500">Regulation 2022 সিলেবাস অনুসারে তালিকাভুক্ত বিষয়সমূহ</p>
+                </div>
+                <a href="#" class="text-xs font-bold text-cobalt hover:underline flex items-center gap-1">
+                  <span>সবগুলো দেখুন</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="subjects-grid">
+                <!-- Dynamically injected subject cards -->
+              </div>
+            </div>
+
+            <!-- 5. RECOMMENDED SKILLS (Cleanly separated from official curriculum) -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 id="skills-heading" class="text-base font-bold text-obsidian">Recommended Skills for CST</h3>
+                    <span
+                      class="text-[10px] font-display font-bold uppercase px-2 py-0.5 bg-blue-50 text-cobalt rounded">Industry
+                      Track</span>
+                  </div>
+                  <p class="text-xs text-slate-500">আপনার ডিপ্লোমা কোর্সের পাশাপাশি মার্কেট-ডিমান্ডেড প্র্যাকটিক্যাল
+                    স্কিল</p>
+                </div>
+                <a href="#" class="text-xs font-bold text-cobalt hover:underline">সবগুলো কোর্স</a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="skills-grid">
+                <!-- Dynamically injected skill course cards -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN (4 cols): Entitlements, Global Hub & Campus -->
+          <div class="lg:col-span-4 space-y-6">
+
+            <!-- Active Entitlement Matrix -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h4 class="text-xs font-display font-bold uppercase tracking-wider text-slate-400">Account Entitlements
+                </h4>
+                <span class="text-[11px] font-display font-bold text-obsidian">DreamCore</span>
+              </div>
+
+              <div class="space-y-2.5">
+                <div
+                  class="p-3 bg-emerald-50/60 border border-emerald-200 rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+                    <div>
+                      <div class="text-xs font-bold text-obsidian">DreamAI Core</div>
+                      <div class="text-[10px] text-slate-500">৳৩০০/মাস · Active</div>
+                    </div>
+                  </div>
+                  <span class="text-xs text-emerald-600 font-bold">✓</span>
+                </div>
+
+                <div
+                  class="p-3 bg-emerald-50/60 border border-emerald-200 rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="flask-conical" class="w-4 h-4 text-emerald-600"></i>
+                    <div>
+                      <div class="text-xs font-bold text-obsidian">DreamLabs</div>
+                      <div class="text-[10px] text-slate-500">Bundled with AI Core</div>
+                    </div>
+                  </div>
+                  <span class="text-xs text-emerald-600 font-bold">✓</span>
+                </div>
+
+                <!-- DreamGlobal Discovery Lock -->
+                <div
+                  class="p-3 bg-slate-50 border border-dashed border-slate-300 rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-2.5 opacity-75">
+                    <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i>
+                    <div>
+                      <div class="text-xs font-bold text-slate-600">DreamGlobal</div>
+                      <div class="text-[10px] text-slate-400">Credit transfer & guide</div>
+                    </div>
+                  </div>
+                  <button
+                    class="px-2.5 py-1 rounded-lg bg-amberAccent text-white text-[11px] font-bold shadow-sm hover:bg-amberHover transition-colors">
+                    + ৳২০০/মাস
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- DreamGlobal Discovery Card -->
+            <div class="bg-gradient-to-br from-blue-900 to-slate-900 text-white p-5 rounded-2xl shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-xs font-display font-bold uppercase tracking-wider text-tealAccent flex items-center gap-1">
+                  <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i> DreamGlobal
+                </span>
+                <span class="text-[10px] font-bold bg-white/10 px-2 py-0.5 rounded text-slate-300">Add-on</span>
+              </div>
+              <h4 class="text-sm font-bold">Explore Study Abroad after Diploma</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                পলিটেকনিক কমপ্লিট করে অস্ট্রেলিয়া, জার্মানি ও নিউজিল্যান্ডে ক্রেডিট ট্রান্সফার ও স্কলারশিপের পূর্ণাঙ্গ
+                গাইডলাইন ও পডকাস্ট।
+              </p>
+              <button
+                class="w-full py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold border border-white/20 transition-all">
+                Explore DreamGlobal Hub
+              </button>
+            </div>
+
+            <!-- DreamCampus Chapter Widget -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-display font-bold text-obsidian">DreamCampus DPI Chapter</span>
+                <span class="text-[10px] font-display font-bold bg-slate-100 text-slate-600 px-2 py-0.5 rounded">১,৮২৩
+                  মেম্বার</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                পলিটেকনিক ক্লাবের মেম্বার হিসেবে যুক্ত হোন এবং সেমিনার ও ভলান্টিয়ারিং অ্যাক্টিভিটিতে অংশ নিন।
+              </p>
+              <button
+                class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-all">
+                Join Campus Chapter
+              </button>
+            </div>
+
+            <!-- DreamArena Alert -->
+            <div class="p-4 bg-orange-50 border border-orange-100 rounded-2xl flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-amberAccent text-white flex items-center justify-center">
+                  <i data-lucide="trophy" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h5 class="text-xs font-bold text-obsidian">DreamArena National Jam</h5>
+                  <p class="text-[10px] text-slate-500">৳৫০,০০০ প্রাইজপুল · রেজিস্ট্রেশন চলছে</p>
+                </div>
+              </div>
+              <button class="text-xs font-bold text-amberAccent hover:underline">Register</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Dynamic Personalization Data Model & Script -->
+  <script>
+    const departmentData = {
+      cst: {
+        studentName: 'Rahim Hasan',
+        initials: 'RH',
+        deptFull: 'Computer Science & Technology',
+        sem: '3rd Semester',
+        code: '28531',
+        continueTitle: 'Digital Electronics → Boolean Algebra & Logic Gates',
+        continueDesc: 'অধ্যায় ৩: ডি মরগ্যানের উপপাদ্য এবং লজিক সার্কিট সিমুলেশন',
+        continueProgress: '65%',
+        labBtn: 'Launch Circuit Simulator',
+        aiContext: 'Ready · CST 3rd Sem Context',
+        aiPrompts: [
+          '💡 De Morgan\'s Law বাংলায় ব্যাখ্যা কর',
+          '📝 Data Structure বোর্ড প্রশ্নের সাজেসন দাও'
+        ],
+        subjects: [
+          { code: '28531', name: 'Digital Electronics', units: 8, progress: '65%' },
+          { code: '28532', name: 'Programming Essentials', units: 10, progress: '40%' },
+          { code: '28533', name: 'Data Structure & Algorithms', units: 7, progress: '20%' },
+          { code: '25931', name: 'Mathematics-3', units: 9, progress: '50%' }
+        ],
+        skills: [
+          { tag: 'Live Cohort', name: 'Game Dev with Unity', time: '12 Weeks · Live Zoom', price: '৳৩,৫০০', status: 'Enrolled ✓' },
+          { tag: 'Self-Paced', name: 'Mobile App Dev (Flutter)', time: '8 Weeks · Projects', price: '৳২,৫০০', status: 'Enroll' },
+          { tag: 'Cohort', name: 'Full-Stack Web Dev', time: '10 Weeks · Node/React', price: '৳৩,০০০', status: 'Enroll' }
+        ]
+      },
+      civil: {
+        studentName: 'Tanvir Ahmed',
+        initials: 'TA',
+        deptFull: 'Civil Technology',
+        sem: '3rd Semester',
+        code: '26431',
+        continueTitle: 'Structural Mechanics → Shear Force & Bending Moment',
+        continueDesc: 'অধ্যায় ৪: ক্যান্টিলিভার এবং সিম্পলি সাপোর্টেড বিমের SFD/BMD নির্ণয়',
+        continueProgress: '45%',
+        labBtn: 'Launch Beam Simulator',
+        aiContext: 'Ready · Civil 3rd Sem Context',
+        aiPrompts: [
+          '💡 SFD & BMD আঁকার সহজ নিয়ম কী?',
+          '📝 Surveying-2 ফিল্ড বুকের হিসাব সমাধান'
+        ],
+        subjects: [
+          { code: '26431', name: 'Structural Mechanics', units: 8, progress: '45%' },
+          { code: '26432', name: 'Advanced Surveying', units: 9, progress: '60%' },
+          { code: '26433', name: 'Construction Materials & Testing', units: 7, progress: '30%' },
+          { code: '25931', name: 'Mathematics-3', units: 9, progress: '50%' }
+        ],
+        skills: [
+          { tag: 'Live Cohort', name: 'AutoCAD 2D & 3D Drafting', time: '8 Weeks · Live Zoom', price: '৳২,৮০০', status: 'Enroll' },
+          { tag: 'Self-Paced', name: 'Civil 3D & BIM Fundamentals', time: '6 Weeks · Practical', price: '৳২,২০০', status: 'Enroll' },
+          { tag: 'Cohort', name: 'Quantity Surveying & Estimating', time: '6 Weeks · Live Practice', price: '৳২,৫০০', status: 'Enroll' }
+        ]
+      },
+      electrical: {
+        studentName: 'Sabbir Hossain',
+        initials: 'SH',
+        deptFull: 'Electrical Technology',
+        sem: '3rd Semester',
+        code: '26731',
+        continueTitle: 'Electrical Circuits-2 → AC Parallel Circuits & Resonance',
+        continueDesc: 'অধ্যায় ৩: RLC প্যারালাল সার্কিটের রেজোন্যান্স ও পাওয়ার ফ্যাক্টর',
+        continueProgress: '70%',
+        labBtn: 'Launch AC Circuit Lab',
+        aiContext: 'Ready · Electrical 3rd Sem Context',
+        aiPrompts: [
+          '💡 Power Factor কেন কমে যায় এবং প্রতিকার কী?',
+          '📝 AC Machines-1 ট্রান্সফরমার টেস্ট বোর্ডের প্রশ্ন'
+        ],
+        subjects: [
+          { code: '26731', name: 'Electrical Circuits-2', units: 9, progress: '70%' },
+          { code: '26732', name: 'Electrical Appliances', units: 8, progress: '55%' },
+          { code: '26831', name: 'Electronics-2', units: 7, progress: '40%' },
+          { code: '25931', name: 'Mathematics-3', units: 9, progress: '50%' }
+        ],
+        skills: [
+          { tag: 'Live Cohort', name: 'PLC & Industrial Automation', time: '10 Weeks · Live Zoom', price: '৳৩,৮০০', status: 'Enroll' },
+          { tag: 'Cohort', name: 'AutoCAD Electrical Schematic', time: '6 Weeks · Live Practice', price: '৳২,৫০০', status: 'Enroll' },
+          { tag: 'Self-Paced', name: 'Solar PV System Design', time: '5 Weeks · Practical', price: '৳২,০০০', status: 'Enroll' }
+        ]
+      }
+    };
+
+    function switchDepartment(deptKey) {
+      const data = departmentData[deptKey];
+      if (!data) return;
+
+      // Update switcher active tab styles
+      ['cst', 'civil', 'electrical'].forEach(key => {
+        const tab = document.getElementById(`tab-${key}`);
+        if (key === deptKey) {
+          tab.className = 'px-3 py-1 rounded-lg bg-white text-cobalt shadow-sm transition-all';
+        } else {
+          tab.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-obsidian transition-all';
+        }
+      });
+
+      // Update Headers & User profile cards
+      document.getElementById('user-avatar').innerText = data.initials;
+      document.getElementById('user-name-card').innerText = data.studentName;
+      document.getElementById('user-subtitle-card').innerText = `${deptKey.toUpperCase()} · 3rd Sem · DPI`;
+      document.getElementById('header-academic-pill').innerText = `Diploma in ${deptKey.toUpperCase()} · 3rd Sem (Reg 2022)`;
+      document.getElementById('greeting-title').innerText = `শুভ দুপুর, ${data.studentName.split(' ')[0]} 👋`;
+      document.getElementById('greeting-subtitle').innerText = `Diploma in ${data.deptFull} · 3rd Semester · Dhaka Polytechnic`;
+
+      // Update Continue Learning
+      document.getElementById('continue-code').innerText = `Subject Code: ${data.code}`;
+      document.getElementById('continue-title').innerText = data.continueTitle;
+      document.getElementById('continue-desc').innerText = data.continueDesc;
+      document.getElementById('continue-progress-text').innerText = `${data.continueProgress} Completed`;
+      document.getElementById('continue-progress-bar').style.width = data.continueProgress;
+      document.getElementById('continue-lab-btn').innerText = data.labBtn;
+
+      // Update DreamAI Assistant
+      document.getElementById('ai-badge').innerText = data.aiContext;
+      const promptsContainer = document.getElementById('ai-quick-prompts');
+      promptsContainer.innerHTML = '<span class="text-[11px] text-slate-400 font-medium">Quick Prompts:</span>' +
+        data.aiPrompts.map(p => `<button class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors">${p}</button>`).join('');
+
+      // Update My Subjects
+      document.getElementById('subjects-heading').innerText = `My Subjects (${deptKey.toUpperCase()} 3rd Semester)`;
+      const subjectsGrid = document.getElementById('subjects-grid');
+      subjectsGrid.innerHTML = data.subjects.map(s => `
+        <div class="p-4 rounded-xl bg-white border border-slate-200 hover:border-cobalt shadow-sm transition-all group">
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] font-display font-bold px-2 py-0.5 rounded bg-blue-50 text-cobalt">${s.code}</span>
+            <span class="text-[11px] text-slate-400">${s.units} Units</span>
+          </div>
+          <h4 class="text-sm font-bold text-obsidian group-hover:text-cobalt transition-colors">${s.name}</h4>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-3">
+            <span>প্রগ্রেস: ${s.progress}</span>
+            <span class="font-bold text-cobalt flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              পড়ুন <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+        </div>
+      `).join('');
+
+      // Update Recommended Skills
+      document.getElementById('skills-heading').innerText = `Recommended Skills for ${deptKey.toUpperCase()}`;
+      const skillsGrid = document.getElementById('skills-grid');
+      skillsGrid.innerHTML = data.skills.map(sk => `
+        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm space-y-2 hover:shadow-md transition-all">
+          <span class="px-2 py-0.5 bg-blue-50 text-cobalt text-[10px] font-display font-bold rounded">${sk.tag}</span>
+          <h5 class="text-xs font-bold text-obsidian">${sk.name}</h5>
+          <p class="text-[11px] text-slate-500">${sk.time}</p>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-100">
+            <span class="text-xs font-bold font-display text-obsidian">${sk.price}</span>
+            <button class="text-[11px] font-bold ${sk.status.includes('✓') ? 'text-cobalt' : 'text-amberAccent hover:underline'}">
+              ${sk.status}
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Initialize with CST (Computer Science)
+    switchDepartment('cst');
+    function toggleMobileSidebar() { const sidebar = document.getElementById('app-sidebar'); const backdrop = document.getElementById('mobile-sidebar-backdrop'); if (sidebar && backdrop) { sidebar.classList.toggle('-translate-x-full'); backdrop.classList.toggle('hidden'); } }
+    } 
+  </script>
+</body>
+
+</html>

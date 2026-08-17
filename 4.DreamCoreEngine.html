@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html lang="bn" class="h-full bg-chalkBg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamCore Entitlement Engine — Dreamship Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0B132B',
+            cobalt: '#2563EB',
+            cobaltHover: '#1D4ED8',
+            tealAccent: '#06D6A0',
+            amberAccent: '#FF6B35',
+            amberHover: '#EA580C',
+            chalkBg: '#F8FAFC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex overflow-hidden"><div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+  <!-- Left Navigation Bar -->
+  <aside id="app-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 h-screen overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300 ease-in-out">
+    <div>
+      <div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+        <div class="w-9 h-9 rounded-xl bg-obsidian flex items-center justify-center text-white shadow-md shadow-obsidian/20">
+          <i data-lucide="compass" class="w-5 h-5 text-tealAccent"></i>
+        </div>
+        <div>
+          <span class="text-lg font-display font-extrabold tracking-tight text-obsidian">Dreamship</span>
+          <span class="text-[10px] font-display font-bold uppercase tracking-wider block text-cobalt -mt-1">Academy</span>
+        </div>
+      </div>
+
+      <div class="px-3 py-4 space-y-6">
+        <div>
+          <a href="3.PersonalizedHome.html" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-cobalt text-white font-semibold text-sm shadow-sm shadow-cobalt/25">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span class="font-display">Personalized Home</span>
+          </a>
+        </div>
+
+        <!-- LEARN -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">LEARN</span>
+          <a href="3.PersonalizedHome.html#learn" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="book-marked" class="w-4 h-4 text-slate-400"></i>
+              <span>My Subjects</span>
+            </div>
+            <span class="text-[10px] font-display font-bold bg-blue-50 text-cobalt px-1.5 py-0.5 rounded">6</span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamai" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm" id="nav-dreamai">
+            <div class="flex items-center gap-3">
+              <i data-lucide="sparkles" class="w-4 h-4 text-tealAccent"></i>
+              <span>DreamAI</span>
+            </div>
+            <span id="nav-dreamai-status" class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+          <a href="3.PersonalizedHome.html#dreamlabs" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm" id="nav-dreamlabs">
+            <div class="flex items-center gap-3">
+              <i data-lucide="flask-conical" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamLabs</span>
+            </div>
+            <span id="nav-dreamlabs-status" class="w-2 h-2 rounded-full bg-tealAccent"></span>
+          </a>
+        </div>
+
+        <!-- GROW -->
+        <div class="space-y-1">
+          <span class="px-3 text-[11px] font-display font-bold uppercase tracking-wider text-slate-400">GROW</span>
+          <a href="10.DreamCertHub.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <div class="flex items-center gap-3">
+              <i data-lucide="award" class="w-4 h-4 text-amberAccent"></i>
+              <span>Skills & Cohorts</span>
+            </div>
+          </a>
+          <a href="11.DreamGlobalHub.html" class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm" id="nav-dreamglobal">
+            <div class="flex items-center gap-3">
+              <i data-lucide="globe" class="w-4 h-4 text-slate-400"></i>
+              <span>DreamGlobal</span>
+            </div>
+            <span id="nav-dreamglobal-badge">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400"></i>
+            </span>
+          </a>
+          <a href="13.DreamCampus.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamCampus</span>
+          </a>
+          <a href="14.DreamArena.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-400"></i>
+            <span>DreamArena</span>
+          </a>
+          <a href="15.InstitutionsB2B.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 font-medium text-sm">
+            <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+            <span>For Institutions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Footer -->
+    <div class="p-3 border-t border-slate-200/80 bg-slate-50/60">
+      <div class="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+        <div class="w-9 h-9 rounded-lg bg-obsidian text-white flex items-center justify-center font-display font-bold text-sm">
+          RH
+        </div>
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-obsidian truncate">Rahim Hasan</h5>
+          <p class="text-[10px] text-slate-500 truncate">CST · 3rd Sem · DPI</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden w-full min-w-0">
+    
+    <!-- Top Bar with Active Entitlement Status Readout & All Modules Dropdown -->
+    <header class="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono font-bold text-slate-400 uppercase">Engine State:</span>
+        <div id="entitlement-pills" class="flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="relative inline-block text-left" id="p4-module-wrapper">
+          <button onclick="toggleP4Menu()" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-obsidian text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-tealAccent"></i>
+            <span>All 14 Modules</span>
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </button>
+          <div id="p4-module-menu" class="hidden absolute right-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 p-4 max-h-[80vh] overflow-y-auto space-y-3">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b">Dreamship 14 Modules</div>
+            <div class="grid grid-cols-1 gap-1 text-xs font-semibold">
+              <a href="index.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>1. Main Landing</span><span class="text-slate-400">index.html</span></a>
+              <a href="2.StudentDashboard.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>2. Student Dashboard</span><span class="text-slate-400">2.StudentDashboard</span></a>
+              <a href="3.PersonalizedHome.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>3. Personalized Home</span><span class="text-slate-400">3.PersonalizedHome.html</span></a>
+              <a href="4.DreamCoreEngine.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>4. DreamCore Engine</span><span class="text-slate-400">4.DreamCoreEngine.html</span></a>
+              <a href="5.DreamGlobalAddon.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>5. DreamGlobal Add-on</span><span class="text-slate-400">5.DreamGlobalAddon.html</span></a>
+              <a href="6.PricingAndPlans.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>6. Pricing & Plans</span><span class="text-slate-400">6.PricingAndPlans.html</span></a>
+              <a href="7.LiveCohorts.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>7. Live Cohorts</span><span class="text-slate-400">7.LiveCohorts.html</span></a>
+              <a href="8.LiveClassroom.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>8. Live Classroom</span><span class="text-slate-400">8.LiveClassroom.html</span></a>
+              <a href="10.DreamCertHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>10. DreamCert Hub</span><span class="text-slate-400">10.DreamCertHub.html</span></a>
+              <a href="11.DreamGlobalHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>11. DreamGlobal Hub</span><span class="text-slate-400">11.DreamGlobalHub.html</span></a>
+              <a href="12.CommunityHub.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>12. Community Hub</span><span class="text-slate-400">12.CommunityHub.html</span></a>
+              <a href="13.DreamCampus.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>13. DreamCampus</span><span class="text-slate-400">13.DreamCampus.html</span></a>
+              <a href="14.DreamArena.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>14. DreamArena</span><span class="text-slate-400">14.DreamArena.html</span></a>
+              <a href="15.InstitutionsB2B.html" class="p-2 hover:bg-slate-100 rounded flex justify-between"><span>15. B2B Institutions</span><span class="text-slate-400">15.InstitutionsB2B.html</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center gap-2">
+          <span>Monthly Total:</span>
+          <span id="monthly-billing-total" class="font-mono font-bold text-cobalt">৳300/mo</span>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      function toggleP4Menu() {
+        const m = document.getElementById('p4-module-menu');
+        if (m) m.classList.toggle('hidden');
+      }
+    </script>
+
+    <!-- Content Workspace -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-chalkBg">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <!-- Live Entitlement Control Panel (Interactive Demo Bar) -->
+        <div class="bg-obsidian text-white p-5 rounded-2xl shadow-lg border border-slate-800">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+            <div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-5 h-5 text-tealAccent"></i>
+                <h3 class="text-sm font-display font-bold">DreamCore Entitlement Engine Simulator</h3>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Toggle purchases to see the frontend evaluate entitlements dynamically.</p>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+              <!-- Toggle 1: Core Subscription -->
+              <label class="flex items-center gap-2 px-3 py-2 bg-slate-900 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-500 transition-colors">
+                <input type="checkbox" id="toggle-core" checked onchange="handleEntitlementToggle()" class="w-4 h-4 rounded text-cobalt focus:ring-0">
+                <span class="text-xs font-medium text-slate-200">DreamAI Core (৳300/mo)</span>
+              </label>
+
+              <!-- Toggle 2: DreamGlobal Add-on -->
+              <label class="flex items-center gap-2 px-3 py-2 bg-slate-900 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-500 transition-colors">
+                <input type="checkbox" id="toggle-global" onchange="handleEntitlementToggle()" class="w-4 h-4 rounded text-cobalt focus:ring-0">
+                <span class="text-xs font-medium text-slate-200">DreamGlobal Add-on (৳200/mo)</span>
+              </label>
+
+              <!-- Toggle 3: Unity Cohort Purchase -->
+              <label class="flex items-center gap-2 px-3 py-2 bg-slate-900 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-500 transition-colors">
+                <input type="checkbox" id="toggle-unity" checked onchange="handleEntitlementToggle()" class="w-4 h-4 rounded text-cobalt focus:ring-0">
+                <span class="text-xs font-medium text-slate-200">Unity Batch (৳3,500 one-time)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span id="debugger-query-result">Query: hasEntitlement(user, "dreamglobal.premium") → false</span>
+            <span>Architecture: Centralized Entitlements (Zero Hardcoded Checks)</span>
+          </div>
+        </div>
+
+        <!-- 2-Column Application Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT: Dynamic Gated Modules (8 Cols) -->
+          <div class="lg:col-span-8 space-y-8">
+            
+            <!-- Module 1: DreamAI Sidecar (Gated by 'dreamai.access') -->
+            <div id="card-dreamai" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+              <!-- Active Header -->
+              <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl bg-emerald-50 text-tealAccent flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian">DreamAI Subject Copilot</h4>
+                    <p class="text-[11px] text-slate-500">Requires entitlement: <code class="text-cobalt font-mono">dreamai.access</code></p>
+                  </div>
+                </div>
+                <div id="badge-dreamai-entitlement" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold">
+                  Active ✓
+                </div>
+              </div>
+
+              <!-- Unlocked State -->
+              <div id="content-dreamai-unlocked" class="p-5 space-y-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs leading-relaxed text-slate-700">
+                  <span class="font-bold text-obsidian">DreamAI:</span> "Digital Electronics-এর ৩য় অধ্যায় অনুসারে, De Morgan-এর ১ম সূত্রটি হলো: $(A + B)' = A' \cdot B'$। সিমুলেশন ল্যাবে সার্কিট পরীক্ষা করতে চাইলে নিচের বোতামে চাপুন।"
+                </div>
+                <div class="flex items-center gap-2">
+                  <input type="text" placeholder="পরবর্তী প্রশ্নটি এখানে লিখুন..." class="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-cobalt">
+                  <button class="px-4 py-2 bg-cobalt text-white rounded-xl text-xs font-bold hover:bg-cobaltHover transition-colors">Send</button>
+                </div>
+              </div>
+
+              <!-- Locked Fallback State -->
+              <div id="content-dreamai-locked" class="hidden p-8 text-center bg-slate-50/50 space-y-3">
+                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mx-auto">
+                  <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-obsidian">DreamAI Core Subscribed Access Only</h5>
+                  <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1">পাঠ্যবই-ভিত্তিক এআই গৃহশিক্ষক এবং ভার্চুয়াল ল্যাব আনলক করতে ড্রিমএআই কোর চালু করুন।</p>
+                </div>
+                <button onclick="activateModule('core')" class="px-5 py-2 rounded-xl bg-cobalt hover:bg-cobaltHover text-white text-xs font-bold shadow-sm transition-all">
+                  Activate DreamAI Core (৳৩০০/মাস)
+                </button>
+              </div>
+            </div>
+
+            <!-- Module 2: DreamGlobal Hub (Gated by 'dreamglobal.premium') -->
+            <div id="card-dreamglobal" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+              <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl bg-blue-50 text-cobalt flex items-center justify-center">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian">DreamGlobal Study Abroad & Podcasts</h4>
+                    <p class="text-[11px] text-slate-500">Requires entitlement: <code class="text-cobalt font-mono">dreamglobal.premium</code></p>
+                  </div>
+                </div>
+                <div id="badge-dreamglobal-entitlement" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200 text-[11px] font-mono font-bold flex items-center gap-1">
+                  <i data-lucide="lock" class="w-3 h-3"></i> Locked
+                </div>
+              </div>
+
+              <!-- Unlocked State -->
+              <div id="content-dreamglobal-unlocked" class="hidden p-5 space-y-4">
+                <div class="p-4 bg-gradient-to-r from-blue-900 to-slate-900 text-white rounded-xl flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-tealAccent">
+                      <i data-lucide="headphones" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-bold uppercase tracking-wider text-tealAccent">Podcast Episode #22</span>
+                      <h5 class="text-xs font-bold">How CST Diploma Engineers Transfer Credits to Australia</h5>
+                    </div>
+                  </div>
+                  <button class="px-3 py-1.5 bg-tealAccent text-obsidian rounded-lg text-xs font-bold">Listen Now</button>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <span class="font-bold text-obsidian block mb-1">Germany Pathways</span>
+                    <p class="text-[11px] text-slate-500">Anabin database status for BTEB 4-year diploma.</p>
+                  </div>
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <span class="font-bold text-obsidian block mb-1">Scholarships 2026</span>
+                    <p class="text-[11px] text-slate-500">Full tuition waiver guidelines for polytechnic grads.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Locked Fallback State -->
+              <div id="content-dreamglobal-locked" class="p-8 text-center bg-slate-50/50 space-y-3">
+                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mx-auto">
+                  <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-obsidian">DreamGlobal Add-on Required</h5>
+                  <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">ডিপ্লোমা পরবর্তী ক্রেডিট ট্রান্সফার, স্কলারশিপ রোডম্যাপ এবং এক্সক্লুসিভ পডকাস্টের জন্য ড্রিমগ্লোবাল সাবস্ক্রিপশন সক্রিয় করুন।</p>
+                </div>
+                <button onclick="activateModule('global')" class="px-5 py-2.5 rounded-xl bg-amberAccent hover:bg-amberHover text-white text-xs font-bold shadow-md shadow-amberAccent/20 transition-all flex items-center gap-1.5 mx-auto">
+                  <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                  <span>Add DreamGlobal (+৳২০০/মাস)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Module 3: Live Course Cohort (Gated by 'course:unity-cohort-2026') -->
+            <div id="card-unity" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+              <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl bg-orange-50 text-amberAccent flex items-center justify-center">
+                    <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-obsidian">Game Development with Unity (Live Cohort)</h4>
+                    <p class="text-[11px] text-slate-500">Requires entitlement: <code class="text-cobalt font-mono">course.unity_cohort_2026</code></p>
+                  </div>
+                </div>
+                <div id="badge-unity-entitlement" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold">
+                  Enrolled ✓
+                </div>
+              </div>
+
+              <!-- Unlocked State -->
+              <div id="content-unity-unlocked" class="p-5 space-y-4">
+                <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] font-bold text-cobalt uppercase">Next Live Class</span>
+                    <h5 class="text-xs font-bold text-obsidian">Physics & Collision Matrix (Class 7 of 24)</h5>
+                    <p class="text-[11px] text-slate-500">Sunday · 8:00 PM (Direct Zoom Integration)</p>
+                  </div>
+                  <button class="px-4 py-2 bg-cobalt hover:bg-cobaltHover text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                    <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                    <span>Join Class</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Locked Fallback State -->
+              <div id="content-unity-locked" class="hidden p-8 text-center bg-slate-50/50 space-y-3">
+                <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mx-auto">
+                  <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-obsidian">Cohort Enrollment Required</h5>
+                  <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1">১২ সপ্তাহের লাইভ জুম ক্লাস, প্রজেক্ট ফাইল এবং ইন্ডাস্ট্রি সার্টিফিকেশন পেতে এনরোল করুন।</p>
+                </div>
+                <button onclick="activateModule('unity')" class="px-5 py-2 rounded-xl bg-obsidian hover:bg-slate-800 text-white text-xs font-bold shadow-sm transition-all">
+                  Enroll for ৳৩,৫০০ (One-time)
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: User Billing Summary & Granted Permissions (4 Cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <h4 class="text-xs font-display font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-3">
+                Current Billing Stack
+              </h4>
+
+              <div class="space-y-2 text-xs" id="billing-items-list">
+                <!-- Injected via JavaScript -->
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs font-bold text-obsidian">Monthly Total:</span>
+                <span id="sidebar-total-bdt" class="text-sm font-bold font-mono text-cobalt">৳300 BDT/mo</span>
+              </div>
+            </div>
+
+            <!-- Entitlements Inspector -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 font-mono text-xs">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                <span class="font-bold text-slate-500 uppercase text-[10px]">Active Entitlement Tokens</span>
+                <span id="active-token-count" class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-600">3 tokens</span>
+              </div>
+              <ul id="token-list" class="space-y-1 text-[11px] text-slate-600">
+                <!-- Injected via JavaScript -->
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Entitlement Engine State Evaluator -->
+  <script>
+    // State Store
+    const entitlementState = {
+      coreSubscription: true,  // Grants: dreamai.access, dreamlabs.access, practice.core
+      globalSubscription: false, // Grants: dreamglobal.premium, dreamglobal.community, dreamglobal.podcasts
+      unityCourse: true        // Grants: course.unity_cohort_2026
+    };
+
+    function evaluateEntitlements() {
+      const activeTokens = [];
+      let monthlyTotal = 0;
+
+      if (entitlementState.coreSubscription) {
+        activeTokens.push('dreamai.access', 'dreamlabs.access', 'practice.core');
+        monthlyTotal += 300;
+      }
+
+      if (entitlementState.globalSubscription) {
+        activeTokens.push('dreamglobal.premium', 'dreamglobal.community', 'dreamglobal.podcasts');
+        monthlyTotal += 200;
+      }
+
+      if (entitlementState.unityCourse) {
+        activeTokens.push('course.unity_cohort_2026');
+      }
+
+      return { activeTokens, monthlyTotal };
+    }
+
+    function renderEngineUI() {
+      const { activeTokens, monthlyTotal } = evaluateEntitlements();
+
+      // Helper check function
+      const has = (token) => activeTokens.includes(token);
+
+      // 1. Update Header & Billing Total
+      document.getElementById('monthly-billing-total').innerText = `৳${monthlyTotal}/mo`;
+      document.getElementById('sidebar-total-bdt').innerText = `৳${monthlyTotal} BDT/mo`;
+
+      // 2. Render Header Token Pills
+      const pillsContainer = document.getElementById('entitlement-pills');
+      pillsContainer.innerHTML = activeTokens.map(t => 
+        `<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">${t}</span>`
+      ).join('');
+
+      // 3. Update Token List Sidebar
+      document.getElementById('active-token-count').innerText = `${activeTokens.length} tokens`;
+      const tokenList = document.getElementById('token-list');
+      tokenList.innerHTML = activeTokens.map(t => 
+        `<li class="flex items-center gap-1.5 text-slate-700"><i data-lucide="check" class="w-3 h-3 text-tealAccent"></i> ${t}</li>`
+      ).join('');
+
+      // 4. Update Billing Stack Sidebar
+      const billingList = document.getElementById('billing-items-list');
+      billingList.innerHTML = `
+        <div class="flex items-center justify-between ${entitlementState.coreSubscription ? 'text-slate-700' : 'text-slate-400 line-through'}">
+          <span>DreamAI Core Subscription</span>
+          <span class="font-mono font-semibold">${entitlementState.coreSubscription ? '৳300/mo' : 'Inactive'}</span>
+        </div>
+        <div class="flex items-center justify-between ${entitlementState.globalSubscription ? 'text-slate-700' : 'text-slate-400 line-through'}">
+          <span>DreamGlobal Add-on</span>
+          <span class="font-mono font-semibold">${entitlementState.globalSubscription ? '৳200/mo' : 'Inactive'}</span>
+        </div>
+        <div class="flex items-center justify-between ${entitlementState.unityCourse ? 'text-slate-700' : 'text-slate-400 line-through'}">
+          <span>Unity Live Batch (One-time)</span>
+          <span class="font-mono font-semibold">${entitlementState.unityCourse ? '৳3,500 Paid' : 'Not Enrolled'}</span>
+        </div>
+      `;
+
+      // 5. Gate DreamAI Module (dreamai.access)
+      const dreamAiActive = has('dreamai.access');
+      document.getElementById('content-dreamai-unlocked').classList.toggle('hidden', !dreamAiActive);
+      document.getElementById('content-dreamai-locked').classList.toggle('hidden', dreamAiActive);
+      document.getElementById('badge-dreamai-entitlement').innerHTML = dreamAiActive ? 'Active ✓' : '<span class="flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Locked</span>';
+      document.getElementById('badge-dreamai-entitlement').className = dreamAiActive 
+        ? 'px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold'
+        : 'px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200 text-[11px] font-mono font-bold';
+      document.getElementById('nav-dreamai-status').className = dreamAiActive ? 'w-2 h-2 rounded-full bg-tealAccent' : 'w-2 h-2 rounded-full bg-slate-300';
+
+      // 6. Gate DreamGlobal Module (dreamglobal.premium)
+      const globalActive = has('dreamglobal.premium');
+      document.getElementById('content-dreamglobal-unlocked').classList.toggle('hidden', !globalActive);
+      document.getElementById('content-dreamglobal-locked').classList.toggle('hidden', globalActive);
+      document.getElementById('badge-dreamglobal-entitlement').innerHTML = globalActive ? 'Active ✓' : '<span class="flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Locked</span>';
+      document.getElementById('badge-dreamglobal-entitlement').className = globalActive 
+        ? 'px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold'
+        : 'px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200 text-[11px] font-mono font-bold';
+      document.getElementById('nav-dreamglobal-badge').innerHTML = globalActive 
+        ? '<span class="w-2 h-2 rounded-full bg-tealAccent"></span>' 
+        : '<i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400"></i>';
+
+      // 7. Gate Unity Cohort (course.unity_cohort_2026)
+      const unityActive = has('course.unity_cohort_2026');
+      document.getElementById('content-unity-unlocked').classList.toggle('hidden', !unityActive);
+      document.getElementById('content-unity-locked').classList.toggle('hidden', unityActive);
+      document.getElementById('badge-unity-entitlement').innerHTML = unityActive ? 'Enrolled ✓' : '<span class="flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Locked</span>';
+      document.getElementById('badge-unity-entitlement').className = unityActive 
+        ? 'px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold'
+        : 'px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200 text-[11px] font-mono font-bold';
+
+      // 8. Update Debugger Query Line
+      document.getElementById('debugger-query-result').innerText = `Query: hasEntitlement(user, "dreamglobal.premium") → ${globalActive}`;
+
+      lucide.createIcons();
+    }
+
+    function handleEntitlementToggle() {
+      entitlementState.coreSubscription = document.getElementById('toggle-core').checked;
+      entitlementState.globalSubscription = document.getElementById('toggle-global').checked;
+      entitlementState.unityCourse = document.getElementById('toggle-unity').checked;
+      renderEngineUI();
+    }
+
+    function activateModule(module) {
+      if (module === 'core') {
+        entitlementState.coreSubscription = true;
+        document.getElementById('toggle-core').checked = true;
+      } else if (module === 'global') {
+        entitlementState.globalSubscription = true;
+        document.getElementById('toggle-global').checked = true;
+      } else if (module === 'unity') {
+        entitlementState.unityCourse = true;
+        document.getElementById('toggle-unity').checked = true;
+      }
+      renderEngineUI();
+    }
+
+    // Initialize UI
+    renderEngineUI();
+  function toggleMobileSidebar() { const sidebar = document.getElementById('app-sidebar'); const backdrop = document.getElementById('mobile-sidebar-backdrop'); if (sidebar && backdrop) { sidebar.classList.toggle('-translate-x-full'); backdrop.classList.toggle('hidden'); } }
+    } 
+  </script>
+</body>
+</html>
